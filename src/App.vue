@@ -1,13 +1,15 @@
 <template>
-  <div class="bg-gray-100 flex flex-col ml-20 mr-20">
-    <h1 class="text-5xl font-semibold p-4">Education in Afghanistan - The Data</h1>
+  <div class="bg-cutty-sark-100 flex flex-col ml-20 mr-20">
+    <div class="bg-cutty-sark-700">
+    <h1 class="text-5xl font-semibold mt-10 ml-20 mb-10  text-cutty-sark-50">Education in Afghanistan - The Data</h1>
+  </div>
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
-        <div class="col-span-3 pr-4 bg-slate-200">
-          <h1 class="text-3xl m-3">Filters</h1>
+        <div class="col-span-3 pr-4 bg-cutty-sark-200">
+          <h1 class="text-3xl m-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
-          <div class="bg-gray-200 flex flex-col h-screen m-5">
+          <div class="bg-cutty-sark-200 flex flex-col h-screen m-5">
             <div class="container mx-auto px-4 py-8 flex-grow flex">
               <div class="pr-4">
                 <!-- Year Filter -->
@@ -59,7 +61,7 @@
                   </label>
                 </div>
                 <!-- Button -->
-                <button @click="resetFilters" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">Reset Filters</button>
+                <button @click="resetFilters" class="mt-4 px-4 py-2 bg-cutty-sark-500 text-white rounded-md hover:bg-cutty-sark-600">Reset Filters</button>
               </div>
             </div>
           </div>

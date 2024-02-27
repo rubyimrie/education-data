@@ -1,6 +1,6 @@
 <template>
     <div class="collapsible-box bg-white" >
-      <div class="collapsible-header" @click="toggleCollapse">
+      <div class="collapsible-header bg-cutty-sark-700 text-cutty-sark-50" @click="toggleCollapse">
         {{ title }}
       </div>
       <div v-if="!collapsed" class="collapsible-content">
@@ -68,7 +68,6 @@
   
   .collapsible-header {
     padding: 10px;
-    background-color: #f0f0f0;
     cursor: pointer;
     border-radius: 5px;
   }
