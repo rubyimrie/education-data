@@ -27,11 +27,35 @@
                   </label>
                 </div>
                 <!-- Collection Filter -->
-                <div>
+                <div class="mb-4">
                   <h3 class="text-lg font-semibold mb-2">Collection</h3>
                   <label v-for="collection in availableCollections" :key="collection" class="flex items-center">
                     <input type="checkbox" v-model="selectedCollections" :value="collection" class="mr-2">
                     {{ collection }}
+                  </label>
+                </div>
+                <!-- Availability Filter -->
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2">Available</h3>
+                  <label v-for="availability in availableAvailabilities" :key="availability" class="flex items-center">
+                    <input type="checkbox" v-model="selectedAvailability" :value="availability" class="mr-2">
+                    {{ availability }}
+                  </label>
+                </div>
+                <!-- Provider Filter -->
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2">Provider</h3>
+                  <label v-for="provider in availableProviders" :key="provider" class="flex items-center">
+                    <input type="checkbox" v-model="selectedProviders" :value="provider" class="mr-2">
+                    {{ provider }}
+                  </label>
+                </div>
+                <!-- Updated Filter -->
+                <div>
+                  <h3 class="text-lg font-semibold mb-2">Updated</h3>
+                  <label v-for="updated in availableUpdated" :key="updated" class="flex items-center">
+                    <input type="checkbox" v-model="selectedUpdated" :value="updated" class="mr-2">
+                    {{ updated }}
                   </label>
                 </div>
                 <!-- Button -->
@@ -93,6 +117,9 @@ export default {
       selectedYears: [], // Define selectedYears array
       selectedTypes: [], // Define selectedTypes array
       selectedCollections: [], // Define selectedCollections array
+      selectedAvailability: [], // Define selectedAvailability array
+      selectedProviders: [], // Define selectedProviders array
+      selectedUpdated: [],
       matchedIndex: -1, // Define matchedIndex property
       dataSources: [
         {
@@ -110,7 +137,11 @@ export default {
             collection: ['House Hold Survey', 'Key Informant Interviews'],
             internal: 'TRUE',
             available: 'TRUE',
-            datatype: 'Ad-hoc'
+            datatype: 'Ad-hoc',
+            provider: 'Unicef',
+            previous:[],
+            confidence:{national:95,urban:90,rural:90,refugee:90},
+            margin:{national:5,urban:9,rural:9,refugee:7}
           }
         },
         {
@@ -124,7 +155,10 @@ export default {
             collection: ['Administrative'],
             timeliness: '95%',
             updated: 'Never',
-            datatype: 'Global'
+            datatype: 'Global',
+            provider: 'Unicef',
+            available: 'FALSE',
+            previous:[]
           }
         },
         {
@@ -138,7 +172,10 @@ export default {
             timeliness: '95%',
             updated: 'Never',
             collection: ['Administrative'],
-            datatype: 'National'
+            datatype: 'National',
+            provider: 'WHO',
+            available: 'TRUE',
+            previous:[]
           }
         }
       ],
@@ -186,6 +223,27 @@ export default {
     });
     return Array.from(types);
   },
+  availableAvailabilities() {
+    const availabilities = new Set();
+    this.dataSources.forEach(source => {
+      availabilities.add(source.data.available);
+    });
+    return Array.from(availabilities);
+  },
+  availableProviders() {
+    const providers = new Set();
+    this.dataSources.forEach(source => {
+      providers.add(source.data.provider);
+    });
+    return Array.from(providers);
+  },
+  availableUpdated() {
+    const updated = new Set();
+    this.dataSources.forEach(source => {
+      updated.add(source.data.updated);
+    });
+    return Array.from(updated);
+  },
   matchedDataSourceSearch() {
       if (!this.searchQuery.trim()) return null;
       const query = this.searchQuery.trim().toLowerCase();
@@ -206,6 +264,15 @@ export default {
       filteredData = filteredData.filter(source => {
         return this.selectedCollections.some(collection => source.data.collection.includes(collection));
       });
+    }
+    if (this.selectedAvailability.length > 0) {
+      filteredData = filteredData.filter(source => this.selectedAvailability.includes(source.data.available));
+    }
+    if (this.selectedProviders.length > 0) {
+      filteredData = filteredData.filter(source => this.selectedProviders.includes(source.data.provider));
+    }
+    if (this.selectedUpdated.length > 0) {
+      filteredData = filteredData.filter(source => this.selectedUpdated.includes(source.data.updated));
     }
     return filteredData;
   },

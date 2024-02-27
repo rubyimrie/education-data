@@ -70,6 +70,7 @@
     padding: 10px;
     background-color: #f0f0f0;
     cursor: pointer;
+    border-radius: 5px;
   }
   
   .collapsible-content {
