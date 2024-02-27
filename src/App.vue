@@ -60,6 +60,19 @@
                     {{ updated }}
                   </label>
                 </div>
+                <!-- Tags -->
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2">Tags</h3>
+                  <!-- Display tags as buttons for filtering -->
+                  <div class="flex flex-wrap">
+                    <button v-for="(tag, index) in availableTags" :key="index" 
+                            :class="{ 'bg-cutty-sark-600 text-white': isTagSelected(tag) }"
+                            @click="toggleTagFilter(tag)"
+                            class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-300 hover:bg-cutty-sark-400 text-white text-sm rounded-md">
+                      {{ tag }}
+                    </button>
+                  </div>
+                </div>
                 <!-- Button -->
                 <button @click="resetFilters" class="mt-4 px-4 py-2 bg-cutty-sark-500 text-white rounded-md hover:bg-cutty-sark-600">Reset Filters</button>
               </div>
@@ -122,6 +135,7 @@ export default {
       selectedAvailability: [], // Define selectedAvailability array
       selectedProviders: [], // Define selectedProviders array
       selectedUpdated: [],
+      selectedTags: [], 
       matchedIndex: -1, // Define matchedIndex property
       dataSources: [
         {
@@ -143,7 +157,8 @@ export default {
             provider: 'Unicef',
             previous:[],
             confidence:{national:95,urban:90,rural:90,refugee:90},
-            margin:{national:5,urban:9,rural:9,refugee:7}
+            margin:{national:5,urban:9,rural:9,refugee:7},
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees']
           }
         },
         {
@@ -160,7 +175,8 @@ export default {
             datatype: 'Global',
             provider: 'Unicef',
             available: 'FALSE',
-            previous:[]
+            previous:[],
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
           }
         },
         {
@@ -177,7 +193,8 @@ export default {
             datatype: 'National',
             provider: 'WHO',
             available: 'TRUE',
-            previous:[]
+            previous:[],
+            tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees']
           }
         }
       ],
@@ -199,7 +216,19 @@ export default {
           this.$refs.dataSourceRefs[this.matchedIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
-    }
+    },
+    toggleTagFilter(tag) {
+      if (this.isTagSelected(tag)) {
+        this.selectedTags = this.selectedTags.filter(selectedTag => selectedTag !== tag);
+      } else {
+        this.selectedTags.push(tag);
+      }
+    },
+    
+    // Check if tag is selected
+    isTagSelected(tag) {
+      return this.selectedTags.includes(tag);
+    },
   },
   computed: {
     availableYears() {
@@ -246,6 +275,13 @@ export default {
     });
     return Array.from(updated);
   },
+  availableTags() {
+      const tags = new Set();
+      this.dataSources.forEach(source => {
+        source.data.tags.forEach(tag => tags.add(tag));
+      });
+      return Array.from(tags);
+    },
   matchedDataSourceSearch() {
       if (!this.searchQuery.trim()) return null;
       const query = this.searchQuery.trim().toLowerCase();
@@ -276,6 +312,12 @@ export default {
     if (this.selectedUpdated.length > 0) {
       filteredData = filteredData.filter(source => this.selectedUpdated.includes(source.data.updated));
     }
+     // Filter by selected tags
+     if (this.selectedTags.length > 0) {
+        filteredData = filteredData.filter(source => {
+          return this.selectedTags.every(tag => source.data.tags.includes(tag));
+        });
+      }
     return filteredData;
   },
   sortedDataSources() {
