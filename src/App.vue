@@ -93,6 +93,7 @@ export default {
       selectedYears: [], // Define selectedYears array
       selectedTypes: [], // Define selectedTypes array
       selectedCollections: [], // Define selectedCollections array
+      matchedIndex: -1, // Define matchedIndex property
       dataSources: [
         {
           title: 'Whole of Afghanistan Assessment 2022',
@@ -152,6 +153,13 @@ export default {
       this.selectedYears = [];
       this.selectedTypes = [];
       this.selectedCollections = [];
+    },
+    scrollToMatchedDataSource() {
+      if (this.matchedIndex !== -1) {
+        this.$nextTick(() => {
+          this.$refs.dataSourceRefs[this.matchedIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
   },
   computed: {
@@ -178,15 +186,15 @@ export default {
     });
     return Array.from(types);
   },
-    matchedDataSourceSearch() {
+  matchedDataSourceSearch() {
       if (!this.searchQuery.trim()) return null;
       const query = this.searchQuery.trim().toLowerCase();
       return this.dataSources.find(source => source.title.toLowerCase().includes(query));
     },
-    isMatched() {
-      return !!this.matchedDataSourceSearch;
+  isMatched() {
+      return this.matchedIndex !== -1;
     },
-    filteredDataSources() {
+  filteredDataSources() {
     let filteredData = [...this.dataSources];
     if (this.selectedYears.length > 0) {
       filteredData = filteredData.filter(source => this.selectedYears.includes(source.data.year));
@@ -213,12 +221,13 @@ export default {
 
   },
   watch: {
-    matchedDataSource(value) {
-      if (value) {
-        const index = this.dataSources.findIndex(source => source === value);
-        this.matchedIndex = index;
+    matchedDataSourceSearch(newValue, oldValue) {
+      if (newValue !== null && newValue !== undefined) {
+        const sortedIndex = this.sortedDataSources.findIndex(source => source === newValue);
+        const originalIndex = this.dataSources.findIndex(source => source === newValue);
+        this.matchedIndex = sortedIndex;
         this.$nextTick(() => {
-          this.$refs.dataSourceRefs[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+          this.$refs.dataSourceRefs[originalIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       } else {
         this.matchedIndex = -1;
@@ -247,6 +256,11 @@ export default {
         this.updateFilteredData();
       },
       deep: true
+    },
+    matchedIndex(newIndex) {
+      if (newIndex !== -1) {
+        this.scrollToMatchedDataSource();
+      }
     }
   }
 };
