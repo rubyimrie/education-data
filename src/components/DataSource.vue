@@ -1,5 +1,5 @@
 <template>
-    <div class="collapsible-box bg-white" style="width: 75vw;">
+    <div class="collapsible-box bg-white" >
       <div class="collapsible-header" @click="toggleCollapse">
         {{ title }}
       </div>
