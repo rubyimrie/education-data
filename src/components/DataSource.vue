@@ -1,5 +1,5 @@
 <template>
-    <div class="collapsible-box bg-white" >
+    <div class="collapsible-box bg-cutty-sark-50" >
       <div class="collapsible-header bg-cutty-sark-700 text-cutty-sark-50" @click="toggleCollapse">
         {{ title }}
       </div>
@@ -22,7 +22,7 @@
         </div>
         <div class="mt-2">
         <div v-if="showDataInfo">
-          <DataInfo :data="data" />
+          <DataInfo :data="data" :toggleTagFilter="toggleTagFilter" :isTagSelected="isTagSelected" :selectedTags="selectedTags" :clearSelectedTags="clearSelectedTags"/>
         </div>
         <div v-else>
           <DataQuality :data="data" />
@@ -40,7 +40,23 @@
   export default {
     props: {
       title: String,
-      data: Object
+      data: Object,
+    isTagSelected: {
+      type: Function,
+      required: true
+      },
+    selectedTags: {
+      type: Array,
+      required: true
+      },
+    toggleTagFilter: {
+      type: Function,
+      required: true
+    },
+    clearSelectedTags: {
+      type: Function,
+      required: true
+    }
     },
     components: {
       DataInfo,
@@ -49,13 +65,28 @@
     data() {
       return {
         collapsed: false,
-        showDataInfo: true  // Initially show DataInfo
+        showDataInfo: true , // Initially show DataInfo
+        selectedTags:[]
       };
     },
     methods: {
       toggleCollapse() {
         this.collapsed = !this.collapsed;
-      }
+      },
+      filterByTag(tag) {
+      this.$emit('tag-filter', tag);
+    },
+    // handleTagClicked(tag) {
+    //   const index = this.selectedTags.indexOf(tag);
+    //   if (index === -1) {
+    //     this.selectedTags.push(tag); // Add tag if not already selected
+    //   } else {
+    //     this.selectedTags.splice(index, 1); // Remove tag if already selected
+    //   }
+    // }
+    handleTagClicked(tag) {
+      this.$emit('tag-clicked', tag);
+    }
     }
   };
   </script>

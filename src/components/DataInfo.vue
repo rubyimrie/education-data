@@ -17,7 +17,12 @@
     <!-- Display tags as buttons -->
     <div class="flex flex-wrap">
       <p class="mr-2">Tags: </p>
-      <button v-for="(tag, index) in data.tags" :key="index" class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-500 text-white text-sm rounded-md hover:bg-cutty-sark-600">{{ tag }}</button>
+      <button v-for="(tag, index) in data.tags" 
+        :key="index"
+        class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-400 text-white text-sm rounded-md hover:bg-cutty-sark-600"
+        @click="handleTagClick(tag)"
+        >
+        {{ tag }}</button>
     </div>
   </div>
 </template>
@@ -25,7 +30,35 @@
 <script>
 export default {
   props: {
-    data: Object
+    data: Object,
+    isTagSelected: {
+      type: Function,
+      required: true
+    },
+    selectedTags: {
+      type: Array,
+      required: true
+    },
+    toggleTagFilter: {
+      type: Function,
+      required: true
+    },
+    clearSelectedTags: {
+      type: Function,
+      required: true
+    }
+  },
+  methods: {
+    // Emit event when a tag is clicked
+    handleTagClick(tag) {
+      console.log("Clicked tag:", tag);
+      console.log("Before clearing selected tags:", this.selectedTags);
+      this.clearSelectedTags();
+      console.log("After clearing selected tags:", this.selectedTags);
+      this.toggleTagFilter(tag);
+      console.log("New Tag:", this.selectedTags);
+    },
   }
 };
 </script>
+

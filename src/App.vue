@@ -7,11 +7,13 @@
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
         <div class="col-span-3 pr-4 bg-cutty-sark-200">
-          <h1 class="text-3xl m-6 text-cutty-sark-700">Filters</h1>
+          <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
-          <div class="bg-cutty-sark-200 flex flex-col h-screen m-5">
+          <div class="bg-cutty-sark-200 flex flex-col h-screen ml-5 mb-5 ">
             <div class="container mx-auto px-4 py-8 flex-grow flex">
               <div class="pr-4">
+                <!-- Button -->
+                <button @click="resetFilters" class="text-cutty-sark-600 hover:text-cutty-sark-700 underline">Reset Filters</button>
                 <!-- Year Filter -->
                 <div class="mb-4">
                   <h3 class="text-lg font-semibold mb-2">Year</h3>
@@ -68,13 +70,11 @@
                     <button v-for="(tag, index) in availableTags" :key="index" 
                             :class="{ 'bg-cutty-sark-600 text-white': isTagSelected(tag) }"
                             @click="toggleTagFilter(tag)"
-                            class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-300 hover:bg-cutty-sark-400 text-white text-sm rounded-md">
+                            class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-400 hover:bg-cutty-sark-400 text-white text-sm rounded-md">
                       {{ tag }}
                     </button>
                   </div>
                 </div>
-                <!-- Button -->
-                <button @click="resetFilters" class="mt-4 px-4 py-2 bg-cutty-sark-500 text-white rounded-md hover:bg-cutty-sark-600">Reset Filters</button>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@
           </div>
           <div v-for="(source, index) in sortedDataSources" :key="index" ref="dataSourceRefs" class="mb-10">
             <div :class="{ 'border-blue-500 border': matchedIndex === index }">
-              <DataSource :title="source.title" :data="source.data" />
+              <DataSource :title="source.title" :data="source.data" :toggleTagFilter="toggleTagFilter" :isTagSelected="isTagSelected" :selectedTags="selectedTags" :clearSelectedTags="clearSelectedTags"/>
             </div>
           </div>
         </div>
@@ -209,6 +209,13 @@ export default {
       this.selectedYears = [];
       this.selectedTypes = [];
       this.selectedCollections = [];
+      this.selectedUpdated = [];
+      this.selectedProviders = [];
+      this.selectedAvailability = [];
+      this.selectedTags = []; 
+    },
+    clearSelectedTags() {
+      this.selectedTags = [];
     },
     scrollToMatchedDataSource() {
       if (this.matchedIndex !== -1) {
@@ -224,7 +231,15 @@ export default {
         this.selectedTags.push(tag);
       }
     },
-    
+    handleTagFilter(tag) {
+      // Update filtered data sources based on the selected tag
+      this.selectedTags = [tag];
+    },
+    handleTagClicked(tag) {
+      // Update selectedTags array
+      // For example:
+      this.selectedTags.push(tag);
+    },
     // Check if tag is selected
     isTagSelected(tag) {
       return this.selectedTags.includes(tag);
@@ -367,6 +382,15 @@ export default {
         this.updateFilteredData();
       },
       deep: true
+    },
+    selectedTags: {
+      handler(newVal) {
+        // Call any method or perform any action when selectedTags change
+        console.log('Selected Tags:', newVal);
+        // You might want to update the filtered data sources here
+        this.updateFilteredData();
+      },
+      deep: true // Watch for changes within the array
     },
     matchedIndex(newIndex) {
       if (newIndex !== -1) {
