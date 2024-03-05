@@ -3,13 +3,13 @@
     <div class="bg-cutty-sark-700">
     <h1 class="text-5xl font-semibold mt-10 ml-20 mb-10  text-cutty-sark-50">Education in Afghanistan - The Data</h1>
   </div>
-    <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl">
+    <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
-        <div class="col-span-3 pr-4 bg-cutty-sark-200">
+        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(180vh - 150px);">
           <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
-          <div class="bg-cutty-sark-200 flex flex-col h-screen ml-5 mb-5 ">
+          <div class="  flex-col h-screen ml-5 mb-5 ">
             <div class="container mx-auto px-4 py-8 flex-grow flex">
               <div class="pr-4">
                 <!-- Button -->
@@ -40,7 +40,7 @@
                 </div>
                 <!-- Availability Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Available</h3>
+                  <h3 class="text-lg font-semibold mb-2">Publicly Available</h3>
                   <label v-for="availability in availableAvailabilities" :key="availability" class="flex items-center">
                     <input type="checkbox" v-model="selectedAvailability" :value="availability" class="mr-2">
                     {{ availability }}
@@ -63,14 +63,14 @@
                   </label>
                 </div>
                 <!-- Tags -->
-                <div class="mb-4">
+                <div class="mb-4 ">
                   <h3 class="text-lg font-semibold mb-2">Tags</h3>
                   <!-- Display tags as buttons for filtering -->
                   <div class="flex flex-wrap">
                     <button v-for="(tag, index) in availableTags" :key="index" 
                             :class="{ 'bg-cutty-sark-600 text-white': isTagSelected(tag) }"
                             @click="toggleTagFilter(tag)"
-                            class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-400 hover:bg-cutty-sark-400 text-white text-sm rounded-md">
+                            class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-400 hover:bg-cutty-sark-600 text-white text-sm rounded-md">
                       {{ tag }}
                     </button>
                   </div>
@@ -196,7 +196,25 @@ export default {
             previous:[],
             tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees']
           }
-        }
+        },
+        {
+          title: 'Data Source 3',
+          data: {
+            date: '2024-02-22',
+            year: '2021',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.',
+            coverage: 90,
+            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
+            collection: ['Administrative'],
+            timeliness: '95%',
+            updated: 'Never',
+            datatype: 'Global',
+            provider: 'Unicef',
+            available: 'FALSE',
+            previous:[],
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
+          }
+        },
       ],
       matchedIndex: -1
     };
