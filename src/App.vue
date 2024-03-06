@@ -147,7 +147,7 @@ export default {
             coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
             timeliness: '20/09/2022',
-            format: 'xlsx',
+            format: 'XLSX',
             link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
             updated: 'Yearly',
             collection: ['House Hold Survey'],
@@ -176,6 +176,7 @@ export default {
             datatype: 'Global',
             provider: 'Unicef',
             available: 'FALSE',
+            format: 'CSV',
             previous:[],
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
           }
@@ -193,6 +194,7 @@ export default {
             collection: ['Administrative'],
             datatype: 'National',
             provider: 'WHO',
+            format: 'XLSX',
             available: 'TRUE',
             previous:[],
             tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees']
@@ -213,6 +215,7 @@ export default {
             provider: 'Unicef',
             available: 'FALSE',
             previous:[],
+            format: 'XLSX',
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
           }
         },
