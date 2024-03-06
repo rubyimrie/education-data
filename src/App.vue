@@ -142,20 +142,21 @@ export default {
           title: 'Whole of Afghanistan Assessment 2022',
           data: {
             date: '2022-09-20',
+            published: '06/02/2023',
             year: '2022',
             content: 'The Whole of Afghanistan Assessment 2022 (Annual WoAA 2022) is a multi sectoral need assessment, conducted based on in-person household-level interviews. This data consists the results collected from the head of household across the country, and provides data on household`s different sectoral and intersectoral needs such as health, education, nutrition, WASH, food security, shocks, protection, and so on. ',
             coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            timeliness: '20/09/2022',
+            timeliness: '30/07/2022 - 04/09/2022',
             format: 'XLSX',
             link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
             updated: 'Yearly',
-            collection: ['House Hold Survey'],
+            collection: 'House Hold Survey',
             internal: 'TRUE',
             available: 'FALSE',
             datatype: 'Ad-hoc',
             provider: 'REACH',
-            previous:[],
+            versions:['2021','2023'],
             confidence:{national:95,urban:90,rural:90,refugee:90},
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
@@ -163,18 +164,18 @@ export default {
           }
         },
         {
-          title: 'Data Source 2',
+          title: 'SDG4 Data Explorer',
           data: {
             date: '2024-02-22',
             year: '2021',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.',
+            content: 'Mock Summary text',
             coverage: 90,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            collection: ['Administrative'],
+            collection: 'Administrative',
             timeliness: '95%',
             updated: 'Never',
             datatype: 'Global',
-            provider: 'Unicef',
+            provider: 'UNESCO',
             available: 'FALSE',
             format: 'CSV',
             previous:[],
@@ -186,12 +187,12 @@ export default {
           data: {
             date: '2024-02-22',
             year: '2022',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.',
+            content: 'Mock Summary text.',
             coverage: 90,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
             timeliness: '95%',
             updated: 'Never',
-            collection: ['Administrative'],
+            collection: 'Administrative',
             datatype: 'National',
             provider: 'WHO',
             format: 'XLSX',
@@ -205,10 +206,10 @@ export default {
           data: {
             date: '2024-02-22',
             year: '2021',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.',
+            content: 'Mock Summary text',
             coverage: 90,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            collection: ['Administrative'],
+            collection: 'Administrative',
             timeliness: '95%',
             updated: 'Never',
             datatype: 'Global',
@@ -278,9 +279,7 @@ export default {
   availableCollections() {
     const collections = new Set();
     this.dataSources.forEach(source => {
-      source.data.collection?.forEach(collection => {
-        collections.add(collection);
-      });
+        collections.add(source.data.collection);
     });
     return Array.from(collections);
   },
