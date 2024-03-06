@@ -2,10 +2,9 @@
      <div class="flex">
     <!-- Left Column -->
     <div class="w-1/2">
-        <h3 class="font-semibold text-lg">Timeliness</h3>
       <div class="flex items-center">
-        <h3 class=" mb-2 ml-4">Date Representing: <span :class="timelinessColor">{{ data.timeliness }}</span></h3>
-        <h3 class=" mb-2 ml-4">Updated: <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
+        <h3 class="mb-2 ml-4" @mouseover="showTooltip('Date Representing', 'Meaning of Date Representing')" @mouseleave="hideTooltip()">Date Representing: <span :class="timelinessColor">{{ data.timeliness }}</span></h3>
+        <h3 class="mb-2 ml-4" @mouseover="showTooltip('Updated', 'Meaning of Updated')" @mouseleave="hideTooltip()">Updated: <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
       </div>
       <h3 class="font-semibold text-lg">Data Sources</h3>
       <h3 class="ml-4">Collection Method:</h3>
@@ -23,20 +22,19 @@
 
     <!-- Right Column -->
     <div class="w-1/2">
-        <h3 class="font-semibold text-lg">Accuracy & Reliability</h3>
     <div class="flex items-center relative ml-4 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
       <h3 class=" mb-2">Coverage:</h3>
       <div class="pie-chart-container">
         <svg viewBox="0 0 100 100" class="pie-chart">
           <!-- Circle representing the pie chart outline -->
-          <circle cx="50" cy="50" r="45" fill="transparent" stroke="#ccc" stroke-width="10"></circle>
+          <circle cx="50" cy="50" r="45" fill="transparent" stroke="#ccc" stroke-width="6"></circle>
           <!-- Arc representing the coverage -->
           <path 
             v-if="coverage > 0" 
             :d="piePath" 
             fill="transparent" 
             :stroke="coverageColor"
-            stroke-width="10"
+            stroke-width="6"
             stroke-linecap="round"
           ></path>
           <!-- Text displaying coverage percentage -->
@@ -70,6 +68,25 @@
         </svg>
       </span>
     </p>
+    <!-- Confidence Levels and Margin of Error -->
+    <div class="mt-4">
+        <table class="border-collapse border border-gray-400">
+            <thead>
+                <tr>
+                    <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Category</th>
+                    <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Confidence Level (%)</th>
+                    <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Margin of Error (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(confidenceLevel, key) in data.confidence" :key="'confidence-' + key">
+                    <td class="border border-gray-400 px-2 py-1 text-sm">{{ key }}</td>
+                    <td class="border border-gray-400 px-2 py-1 text-sm">{{ confidenceLevel }}</td>
+                    <td class="border border-gray-400 px-2 py-1 text-sm">{{ data.margin[key] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     </div>  
     </div>
   </template>
@@ -81,9 +98,29 @@
     },
     data() {
       return {
-        showCoverageInfo: false
+        showCoverageInfo: false,
+        tooltip: {
+        show: false,
+        title: '',
+        meaning: '',
+        x: 0,
+        y: 0
+      }
       };
     },
+    methods:{
+      showTooltip(title, meaning, event) {
+      this.tooltip.title = title;
+      this.tooltip.meaning = meaning;
+      this.tooltip.show = true;
+      this.tooltip.x = event.clientX + 10;
+      this.tooltip.y = event.clientY + 10;
+    },
+      hideTooltip() {
+        this.tooltip.show = false;
+      }
+    },
+
     computed: {
       coverage() {
         return parseInt(this.data.coverage);
@@ -110,7 +147,7 @@
       },
       coverageColor() {
         if (this.coverage >= 90) {
-          return 'green';
+          return '#4CAF50';
         } else if (this.coverage >= 60) {
           return 'orange';
         } else {

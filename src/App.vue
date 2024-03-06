@@ -24,7 +24,7 @@
                 </div>
                 <!-- Type Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Type</h3>
+                  <h3 class="text-lg font-semibold mb-2">Scope</h3>
                   <label v-for="datatype in availableTypes" :key="datatype" class="flex items-center">
                     <input type="checkbox" v-model="selectedTypes" :value="datatype" class="mr-2">
                     {{ datatype }}
@@ -142,23 +142,24 @@ export default {
           title: 'Whole of Afghanistan Assessment 2022',
           data: {
             date: '2022-09-20',
-            year: '2020',
-            content: 'The progressive shift in the drivers of humanitarian needs, from conflict and Covid-19 to economic shocks and drought, continues to be observed throughout 2022. Exposure to, as well as impact of these shocks, are felt across all population groups, suggesting similar levels of vulnerability. Yet, key differences observed between rural, urban and refugee populations highlight the need of a targeted response.',
+            year: '2022',
+            content: 'The Whole of Afghanistan Assessment 2022 (Annual WoAA 2022) is a multi sectoral need assessment, conducted based on in-person household-level interviews. This data consists the results collected from the head of household across the country, and provides data on household`s different sectoral and intersectoral needs such as health, education, nutrition, WASH, food security, shocks, protection, and so on. ',
             coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
             timeliness: '20/09/2022',
-            format: 'PDF',
-            link: 'https://reliefweb.int/report/afghanistan/whole-afghanistan-assessment-2022-key-findings-presentation-inter-cluster-coordination-team-kabul-20-september-2022',
+            format: 'xlsx',
+            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
             updated: 'Yearly',
-            collection: ['House Hold Survey', 'Key Informant Interviews'],
+            collection: ['House Hold Survey'],
             internal: 'TRUE',
-            available: 'TRUE',
+            available: 'FALSE',
             datatype: 'Ad-hoc',
-            provider: 'Unicef',
+            provider: 'REACH',
             previous:[],
             confidence:{national:95,urban:90,rural:90,refugee:90},
             margin:{national:5,urban:9,rural:9,refugee:7},
-            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees']
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
+            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data'
           }
         },
         {

@@ -6,14 +6,14 @@
       <div v-if="!collapsed" class="collapsible-content">
         <div class="button-container">
           <button 
-            class="tab-btn text-sm  focus:outline-none mr-4"
+            class="tab-btn  focus:outline-none mr-4"
             :class="{ 'active': showDataInfo }"
             @click="showDataInfo = true"
           >
             Data Info
           </button>
           <button 
-            class="tab-btn text-sm focus:outline-none"
+            class="tab-btn focus:outline-none"
             :class="{ 'active': !showDataInfo }"
             @click="showDataInfo = false"
           >
