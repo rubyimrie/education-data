@@ -2,20 +2,41 @@
      <div class="flex">
     <!-- Left Column -->
     <div class="w-1/2">
-        <h3 class="font-semibold text-lg">Timeliness</h3>
-      <div class="flex items-center">
-        <h3 class=" mb-2 ml-4">Date Representing: <span :class="timelinessColor">{{ data.timeliness }}</span></h3>
-        <h3 class=" mb-2 ml-4">Updated: <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
+      <div>
+
       </div>
-      <h3 class="font-semibold text-lg">Data Sources</h3>
-      <h3 class="ml-4">Collection Method:</h3>
-        <ul style="list-style-type: disc;" class="mb-2">
-          <li v-for="(method, index) in data.collection" :key="index" class="ml-12">
-            <span>{{ method }}</span>
-          </li>
-        </ul>
-      <h3 class="  mb-2 ml-4">Data Owner: <span >{{  }}</span></h3>
-      <h3 class="  mb-2 ml-4">Quality Checks: <span >{{ }}</span></h3>
+      <h3 class="mb-2 ml-4"><span class="font-semibold">Date Representing:</span> <span :class="timelinessColor">{{ data.timeliness }}</span></h3>
+      <h3 class="mb-2 ml-4"><span class="font-semibold">Updated:</span> <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
+      <h3 class=" mb-2 ml-4"><span class="font-semibold">Other Versions: </span>
+        <span class="text-cutty-sark-300" v-for="(version, index) in data.versions" :key="index">
+          <span class="underline">{{ version }} </span>
+          <span v-if="index !== data.versions.length - 1">, </span>
+        </span>
+      </h3>
+      
+      <h3 class=" mb-2 ml-4"><span class="font-semibold">Data Provider: </span><span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.provider }}</span></h3>
+      <h3 class=" mb-2 ml-4"><span class="font-semibold">Collection Method:</span> <span>{{ data.collection }}</span></h3>
+
+      <p class="flex items-center mb-2 ml-4"><span class="font-semibold">Internally Consistent: </span>
+      <span>
+        <svg v-if="data.internal" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+        <svg v-else class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
+        </svg>
+      </span>
+    </p>
+    <p class="flex items-center mb-2 ml-4"><span class="font-semibold">Externaly Consistent: </span>
+      <span>
+        <svg v-if="data.internal" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+        <svg v-else class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
+        </svg>
+      </span>
+    </p>
     </div>
 
      <!-- Separator Line -->
@@ -23,24 +44,23 @@
 
     <!-- Right Column -->
     <div class="w-1/2">
-        <h3 class="font-semibold text-lg">Accuracy & Reliability</h3>
-    <div class="flex items-center relative ml-4 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
-      <h3 class=" mb-2">Coverage:</h3>
+    <div class="flex items-center relative ml-1 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
+      <h3 class=" mb-2 font-semibold">Coverage:</h3>
       <div class="pie-chart-container">
         <svg viewBox="0 0 100 100" class="pie-chart">
           <!-- Circle representing the pie chart outline -->
-          <circle cx="50" cy="50" r="45" fill="transparent" stroke="#ccc" stroke-width="10"></circle>
+          <circle cx="50" cy="50" r="45" fill="transparent" stroke="#ccc" stroke-width="6"></circle>
           <!-- Arc representing the coverage -->
           <path 
             v-if="coverage > 0" 
             :d="piePath" 
             fill="transparent" 
             :stroke="coverageColor"
-            stroke-width="10"
+            stroke-width="6"
             stroke-linecap="round"
           ></path>
           <!-- Text displaying coverage percentage -->
-          <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" class="coverage-text">
+          <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" class="text-lg">
             {{ coverage }}%
           </text>
         </svg>
@@ -50,26 +70,25 @@
         </div>
       </div>
     </div>
-    <p class="flex items-center mb-2 ml-4">Internally Consistent: 
-      <span>
-        <svg v-if="data.internal" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-        </svg>
-        <svg v-else class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
-        </svg>
-      </span>
-    </p>
-    <p class="flex items-center mb-2 ml-4">Externaly Consistent: 
-      <span>
-        <svg v-if="data.internal" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-        </svg>
-        <svg v-else class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
-        </svg>
-      </span>
-    </p>
+    <!-- Confidence Levels and Margin of Error -->
+    <div class="mt-4">
+        <table class="border-collapse border border-gray-400">
+            <thead>
+                <tr>
+                    <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Category</th>
+                    <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Confidence Level (%)</th>
+                    <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Margin of Error (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(confidenceLevel, key) in data.confidence" :key="'confidence-' + key">
+                    <td class="border border-gray-400 px-2 py-1 text-sm">{{ key }}</td>
+                    <td class="border border-gray-400 px-2 py-1 text-sm">{{ confidenceLevel }}</td>
+                    <td class="border border-gray-400 px-2 py-1 text-sm">{{ data.margin[key] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     </div>  
     </div>
   </template>
@@ -81,9 +100,29 @@
     },
     data() {
       return {
-        showCoverageInfo: false
+        showCoverageInfo: false,
+        tooltip: {
+        show: false,
+        title: '',
+        meaning: '',
+        x: 0,
+        y: 0
+      }
       };
     },
+    methods:{
+      showTooltip(title, meaning, event) {
+      this.tooltip.title = title;
+      this.tooltip.meaning = meaning;
+      this.tooltip.show = true;
+      this.tooltip.x = event.clientX + 10;
+      this.tooltip.y = event.clientY + 10;
+    },
+      hideTooltip() {
+        this.tooltip.show = false;
+      }
+    },
+
     computed: {
       coverage() {
         return parseInt(this.data.coverage);
@@ -110,7 +149,7 @@
       },
       coverageColor() {
         if (this.coverage >= 90) {
-          return 'green';
+          return '#4CAF50';
         } else if (this.coverage >= 60) {
           return 'orange';
         } else {
@@ -153,7 +192,6 @@
   }
   
   .coverage-text {
-    font-size: 14px;
     font-weight: bold;
     fill: black;
   }
