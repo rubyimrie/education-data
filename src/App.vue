@@ -355,6 +355,10 @@ export default {
           return this.selectedTags.every(tag => source.data.tags.includes(tag));
         });
       }
+      if (this.searchQuery.trim() !== '') {
+        const query = this.searchQuery.trim().toLowerCase();
+        filteredData = filteredData.filter(source => source.title.toLowerCase().includes(query));
+      }
     return filteredData;
   },
   sortedDataSources() {
