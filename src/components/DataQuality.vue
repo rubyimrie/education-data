@@ -44,8 +44,14 @@
 
     <!-- Right Column -->
     <div class="w-1/2">
-    <div class="flex items-center relative ml-1 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
-      <h3 class=" mb-2 font-semibold">Coverage:</h3>
+    <div class="flex items-center relative">
+      <div @mouseover="showGeoInfo = true" @mouseleave="showGeoInfo = false">
+        <h3 class=" mb-2 font-semibold">Geographical Coverage (i):</h3>
+        <div v-if="showGeoInfo" class="geo-info absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+          {{ geoInfo }}
+        </div>
+      </div>
+    <div class="ml-1 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
       <div class="pie-chart-container">
         <svg viewBox="0 0 100 100" class="pie-chart">
           <!-- Circle representing the pie chart outline -->
@@ -70,6 +76,7 @@
         </div>
       </div>
     </div>
+  </div>
     <!-- Confidence Levels and Margin of Error -->
     <div class="mt-4">
         <table class="border-collapse border border-gray-400">
@@ -101,26 +108,12 @@
     data() {
       return {
         showCoverageInfo: false,
-        tooltip: {
-        show: false,
-        title: '',
-        meaning: '',
-        x: 0,
-        y: 0
-      }
+        showGeoInfo: false,
+        geoInfo: 'This is the percentage of provinces that have been included in the study.',
       };
     },
     methods:{
-      showTooltip(title, meaning, event) {
-      this.tooltip.title = title;
-      this.tooltip.meaning = meaning;
-      this.tooltip.show = true;
-      this.tooltip.x = event.clientX + 10;
-      this.tooltip.y = event.clientY + 10;
-    },
-      hideTooltip() {
-        this.tooltip.show = false;
-      }
+      
     },
 
     computed: {
@@ -202,9 +195,21 @@
     transform: translateX(-50%);
     display: none;
   }
-  
-  .pie-chart-container:hover .coverage-info {
+
+  .geo-info {
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+  }
+
+  :hover .geo-info{
     display: block;
   }
+  
+  .pie-chart-container:hover .coverage-info{
+    display: block;
+  }
+
   </style>
   
