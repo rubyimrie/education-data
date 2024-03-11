@@ -2,7 +2,14 @@
   <div class="bg-cutty-sark-100 flex flex-col ml-20 mr-20">
     <div class="bg-cutty-sark-700">
     <h1 class="text-5xl font-semibold mt-10 ml-20 mb-10  text-cutty-sark-50">Education in Afghanistan - The Data</h1>
-  </div>
+    </div>
+    <div class="bg-cutty-sark-500">
+    <p class="ml-20 mb-5 mt-5 text-white">
+    The aim of this site is to collate the data sources on Education in Afghanistan, providing a centralized platform for accessing and visualising the data quality of data sources 
+    related to various aspects of education in the country. By consolidating diverse data sources, the site aims to facilitate comprehensive research, inform evidence-based decision-making, and 
+    contribute to the improvement of education policies and interventions in Afghanistan.
+  </p>
+    </div>
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
