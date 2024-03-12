@@ -117,7 +117,11 @@
   
   .tab-btn {
   padding: 6px 6px;
-
+  border-top-left-radius: 10px; /* Rounded top left corner */
+  border-top-right-radius: 10px;
+  border-top: 1px solid #ccc; /* Light grey border on top */
+  border-left: 1px solid #ccc; /* Light grey border on top */
+  border-right: 1px solid #ccc; /* Light grey border on top */
 }
 
 .tab-btn.active {
@@ -125,6 +129,10 @@
   border-top-right-radius: 10px;
   /* box-shadow: 10px 0px 4px rgba(0, 0, 0, 0.2);  */
   box-shadow: 3px -4px 4px rgba(0, 0, 0, 0.2); /* Add shadow only at the top */
+  border-top: 1px solid #ccc; /* Light grey border on top */
+  border-left: 1px solid #ccc; /* Light grey border on top */
+  border-right: 1px solid #ccc; /* Light grey border on top */
+  border-bottom: 2px solid #656565; 
 }
   </style>
   
