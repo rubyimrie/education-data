@@ -158,10 +158,11 @@ export default {
             format: 'XLSX',
             link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
             updated: 'Yearly',
-            collection: 'House Hold Survey',
+            collection: ['Head of House Hold Survey','Key Informant Interviews'],
+            samplesize:['17,262','10,529'],
             internal: 'TRUE',
             available: 'FALSE',
-            datatype: 'Project Based',
+            datatype: 'National',
             provider: 'REACH',
             versions:['2021','2023'],
             confidence:{national:95,urban:90,rural:90,refugee:90},
@@ -178,7 +179,7 @@ export default {
             content: 'Mock Summary text',
             coverage: 90,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            collection: 'Administrative',
+            collection: ['Administrative'],
             timeliness: '95%',
             updated: 'Never',
             datatype: 'Global',
@@ -199,7 +200,7 @@ export default {
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
             timeliness: '95%',
             updated: 'Never',
-            collection: 'Administrative',
+            collection: ['Administrative'],
             datatype: 'National',
             provider: 'WHO',
             format: 'XLSX',
@@ -216,7 +217,7 @@ export default {
             content: 'Mock Summary text',
             coverage: 90,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            collection: 'Administrative',
+            collection: ['Project Based'],
             timeliness: '95%',
             updated: 'Never',
             datatype: 'Global',
@@ -284,12 +285,14 @@ export default {
     return Array.from(years);
   },
   availableCollections() {
-    const collections = new Set();
-    this.dataSources.forEach(source => {
-        collections.add(source.data.collection);
+  const collections = new Set();
+  this.dataSources.forEach(source => {
+    source.data.collection.forEach(collection => {
+      collections.add(collection);
     });
-    return Array.from(collections);
-  },
+  });
+  return Array.from(collections);
+},
   availableTypes() {
     const types = new Set();
     this.dataSources.forEach(source => {
