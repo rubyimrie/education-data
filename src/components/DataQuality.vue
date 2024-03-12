@@ -21,9 +21,38 @@
       </h3>
       
       <h3 class=" mb-2 ml-4"><span class="font-semibold">Data Provider: </span><span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.provider }}</span></h3>
-      <h3 class=" mb-2 ml-4"><span class="font-semibold">Collection Method:</span> <span>{{ data.collection }}</span></h3>
+      
+      <!-- Collection Method -->
+      <div class="mb-2 ml-4 flex flex-col">
+        <span class="font-semibold">Collection Method:</span>
+        <div v-if="Array.isArray(data.collection)">
+          <span class="flex relative mb-2" v-for="(method, index) in data.collection" :key="index">
+            <span class="mr-2">{{ method }} </span>
+            <span v-if="method === 'Head of House Hold Survey'">
+              <img width="20" height="20" src="https://img.icons8.com/ios/50/survey.png" alt="survey"/>
+            </span>
+            <span v-else-if="method === 'Key Informant Interviews'">
+              <img width="20" height="20" src="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/external-interview-news-xnimrodx-lineal-xnimrodx.png" alt="external-interview-news-xnimrodx-lineal-xnimrodx"/>
+            </span>
+            <span v-else-if="method === 'Administrative'">
+              <img width="20" height="20" src="https://img.icons8.com/external-others-made-by-made/50/external-administrative-government-others-made-by-made-36.png" alt="external-administrative-government-others-made-by-made-36"/>
+            </span>
+          </span>
+        </div>
+        <div v-else>
+          <span>{{ data.collection }}</span>
+        </div>
+      </div>
 
-      <p class="flex items-center mb-2 ml-4"><span class="font-semibold">Internally Consistent: </span>
+
+      <!-- Internal Consistency -->
+      <div class="flex items-center">
+        <div @mouseover="showInternalInfo = true" @mouseleave="showInternalInfo = false">
+        <h3 class="mb-2 ml-4"><span class="font-semibold">Internally Consistency (i): </span> </h3>
+        <div v-if="showInternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+          {{ internalInfo }}
+        </div>
+        </div>
       <span>
         <svg v-if="data.internal" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
@@ -32,8 +61,16 @@
           <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
         </svg>
       </span>
-    </p>
-    <p class="flex items-center mb-2 ml-4"><span class="font-semibold">Externaly Consistent: </span>
+    </div>
+    <div>
+    <!-- External Consistency -->
+    <div class="flex items-center">
+      <div @mouseover="showExternalInfo = true" @mouseleave="showExternalInfo = false">
+        <h3 class="mb-2 ml-4"><span class="font-semibold">External Consistency (i): </span> </h3>
+        <div v-if="showExternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+          {{ externalInfo }}
+        </div>
+        </div>
       <span>
         <svg v-if="data.internal" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
@@ -42,7 +79,8 @@
           <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
         </svg>
       </span>
-    </p>
+    </div>
+    </div>
     </div>
 
      <!-- Separator Line -->
@@ -124,9 +162,13 @@
         showGeoInfo: false,
         showCiInfo: false,
         showDateInfo: false,
+        showInternalInfo: false,
+        showExternalInfo: false,
         geoInfo: 'This is the percentage of provinces that have been included in the study.',
         ciInfo: 'Confidence levels indicate the probability that the true value of a parameter lies within a specified range while the margin of error quantifies the amount of random sampling error present in survey results. This is information has been taken from the Data Provider',
-        dateInfo: 'The earliest date and latest date included in the dataset',
+        dateInfo: 'The earliest date and latest date included in the dataset.',
+        internalInfo: 'Internal Consistency implies no contradictions or discrepancies within the dataset itself',
+        externalInfo: 'External Consistency implies no contradictions or discrepancies with other data sources. For the purpose of this website it has only been compared to other data sources on this website representing the same timeframe.',
       };
     },
     methods:{
