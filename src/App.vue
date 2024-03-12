@@ -161,7 +161,7 @@ export default {
             collection: 'House Hold Survey',
             internal: 'TRUE',
             available: 'FALSE',
-            datatype: 'Ad-hoc',
+            datatype: 'Project Based',
             provider: 'REACH',
             versions:['2021','2023'],
             confidence:{national:95,urban:90,rural:90,refugee:90},

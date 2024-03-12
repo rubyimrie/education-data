@@ -10,7 +10,7 @@
             :class="{ 'active': showDataInfo }"
             @click="showDataInfo = true"
           >
-            Data Info
+            The Data
           </button>
           <button 
             class="tab-btn focus:outline-none"
