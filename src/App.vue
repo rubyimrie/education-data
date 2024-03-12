@@ -159,6 +159,7 @@ export default {
             link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
             updated: 'Yearly',
             collection: ['Head of House Hold Survey','Key Informant Interviews'],
+            samplesize:['17,262','10,529'],
             internal: 'TRUE',
             available: 'FALSE',
             datatype: 'National',

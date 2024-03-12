@@ -3,14 +3,16 @@
     <!-- Left Column -->
     <div class="w-1/2">
       <!-- Date Repredenting -->
-      <div class="flex relative"> 
+      <div class="flex relative items-center"> 
         <div @mouseover="showDateInfo = true" @mouseleave="showDateInfo = false">
-        <h3 class="mb-2 ml-4"><span class="font-semibold">Date Representing (i): </span> </h3>
+        <h3 class="mb-2 ml-4 mr-2"><span class="font-semibold">Date Representing (i): </span> </h3>
         <div v-if="showDateInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ dateInfo }}
         </div>
         </div>
-        <span :class="timelinessColor">{{ data.timeliness }}</span>
+        <div class="rounded-md bg-cutty-sark-200 items-center">
+        <span class="ml-1 mr-2">{{ data.timeliness }}</span>
+        </div>
       </div>
       <!-- Updated -->
       <div class="flex relative ">
@@ -25,36 +27,39 @@
           <span v-if="index !== data.versions.length - 1">, </span>
         </span>
       </h3>
-      
-      <h3 class=" mb-2 ml-4"><span class="font-semibold">Data Provider: </span><span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.provider }}</span></h3>
-      
+      <hr>
+      <h3 class=" mb-2 ml-4 mt-2"><span class="font-semibold">Data Provider: </span><span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.provider }}</span></h3>
       <!-- Collection Method -->
       <div class="mb-2 ml-4 flex flex-col">
         <span class="font-semibold">Collection Method:</span>
-        <div v-if="Array.isArray(data.collection)">
-          <span class="flex relative mb-2" v-for="(method, index) in data.collection" :key="index">
-            <span class="mr-2">{{ method }} </span>
-            <span class="bg-cutty-sark-200 rounded-md items-center">
-            <span v-if="method === 'Head of House Hold Survey'">
-              <img class="m-1" width="20" height="20" src="https://img.icons8.com/ios/50/survey.png" alt="survey"/>
-            </span>
-            <span v-else-if="method === 'Key Informant Interviews'">
-              <img class="m-1" width="20" height="20" src="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/external-interview-news-xnimrodx-lineal-xnimrodx.png" alt="external-interview-news-xnimrodx-lineal-xnimrodx"/>
-            </span>
-            <span v-else-if="method === 'Administrative'">
-              <img class="m-1" width="20" height="20" src="https://img.icons8.com/external-others-made-by-made/50/external-administrative-government-others-made-by-made-36.png" alt="external-administrative-government-others-made-by-made-36"/>
-            </span>
-          </span>
-          </span>
+        <div class="mt-2" v-if="Array.isArray(data.collection)">
+          <template v-for="(method, index) in data.collection" :key="index">
+            <div class="flex relative mb-2">
+              <span class="bg-cutty-sark-200 rounded-md items-center">
+                <span v-if="method === 'Head of House Hold Survey'">
+                  <img class="m-1" width="20" height="20" src="https://img.icons8.com/ios/50/survey.png" alt="survey"/>
+                </span>
+                <span v-else-if="method === 'Key Informant Interviews'">
+                  <img class="m-1" width="20" height="20" src="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/external-interview-news-xnimrodx-lineal-xnimrodx.png" alt="external-interview-news-xnimrodx-lineal-xnimrodx"/>
+                </span>
+                <span v-else-if="method === 'Administrative'">
+                  <img class="m-1" width="20" height="20" src="https://img.icons8.com/external-others-made-by-made/50/external-administrative-government-others-made-by-made-36.png" alt="external-administrative-government-others-made-by-made-36"/>
+                </span>
+              </span>
+              <!-- Include sample size -->
+              <span class="ml-2">{{ method }}</span>
+              <span class="ml-2">(Sample Size: {{ data.samplesize[index] }})</span>
+            </div>
+          </template>
         </div>
         <div v-else>
           <span>{{ data.collection }}</span>
         </div>
       </div>
-
+      <hr>
 
       <!-- Internal Consistency -->
-      <div class="flex items-center">
+      <div class="flex items-center mt-2">
         <div @mouseover="showInternalInfo = true" @mouseleave="showInternalInfo = false">
         <h3 class="mb-2 ml-4"><span class="font-semibold">Internally Consistency (i): </span> </h3>
         <div v-if="showInternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
