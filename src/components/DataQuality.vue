@@ -6,7 +6,7 @@
       <div class="flex relative"> 
         <div @mouseover="showDateInfo = true" @mouseleave="showDateInfo = false">
         <h3 class="mb-2 ml-4"><span class="font-semibold">Date Representing (i): </span> </h3>
-        <div v-if="showDateInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+        <div v-if="showDateInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ dateInfo }}
         </div>
         </div>
@@ -57,7 +57,7 @@
       <div class="flex items-center">
         <div @mouseover="showInternalInfo = true" @mouseleave="showInternalInfo = false">
         <h3 class="mb-2 ml-4"><span class="font-semibold">Internally Consistency (i): </span> </h3>
-        <div v-if="showInternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+        <div v-if="showInternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ internalInfo }}
         </div>
         </div>
@@ -75,7 +75,7 @@
     <div class="flex items-center">
       <div @mouseover="showExternalInfo = true" @mouseleave="showExternalInfo = false">
         <h3 class="mb-2 ml-4"><span class="font-semibold">External Consistency (i): </span> </h3>
-        <div v-if="showExternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+        <div v-if="showExternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ externalInfo }}
         </div>
         </div>
@@ -99,7 +99,7 @@
     <div class="flex items-center relative">
       <div @mouseover="showGeoInfo = true" @mouseleave="showGeoInfo = false">
         <h3 class=" mb-2 font-semibold">Geographical Coverage (i):</h3>
-        <div v-if="showGeoInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+        <div v-if="showGeoInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ geoInfo }}
         </div>
       </div>
@@ -123,7 +123,7 @@
           </text>
         </svg>
         <!-- Coverage Info tooltip -->
-        <div v-if="showCoverageInfo" class="coverage-info absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+        <div v-if="showCoverageInfo" class="coverage-info absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ data.coverageInfo }}
         </div>
       </div>
