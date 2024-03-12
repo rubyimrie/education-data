@@ -12,7 +12,13 @@
         </div>
         <span :class="timelinessColor">{{ data.timeliness }}</span>
       </div>
-      <h3 class="mb-2 ml-4"><span class="font-semibold">Updated:</span> <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
+      <!-- Updated -->
+      <div class="flex relative ">
+        <h3 class="mb-2 ml-4"><span class="font-semibold">Updated:</span> <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
+        <span v-if="data.updated !== 'Never'" class="ml-2">
+          <img  width="20" height="20" src="https://img.icons8.com/pastel-glyph/64/loop.png" alt="loop"/>
+        </span>
+      </div>
       <h3 class=" mb-2 ml-4"><span class="font-semibold">Other Versions: </span>
         <span class="text-cutty-sark-300" v-for="(version, index) in data.versions" :key="index">
           <span class="underline">{{ version }} </span>
