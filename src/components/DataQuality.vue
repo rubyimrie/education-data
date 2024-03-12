@@ -31,7 +31,7 @@
       <h3 class=" mb-2 ml-4 mt-2"><span class="font-semibold">Data Provider: </span><span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.provider }}</span></h3>
       <!-- Collection Method -->
       <div class="mb-2 ml-4 flex flex-col">
-        <span class="font-semibold">Collection Method:</span>
+        <span class="font-semibold">Collection Methods:</span>
         <div class="mt-2" v-if="Array.isArray(data.collection)">
           <template v-for="(method, index) in data.collection" :key="index">
             <div class="flex relative mb-2">

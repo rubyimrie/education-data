@@ -6,18 +6,18 @@
       <div v-if="!collapsed" class="collapsible-content">
         <div class="button-container">
           <button 
-            class="tab-btn  focus:outline-none mr-4"
+            class="tab-btn  focus:outline-none"
             :class="{ 'active': showDataInfo }"
             @click="showDataInfo = true"
           >
-            The Data
+          <span class="ml-2 mr-2" :class="{ 'active': showDataInfo }">The Data</span>
           </button>
           <button 
             class="tab-btn focus:outline-none"
             :class="{ 'active': !showDataInfo }"
             @click="showDataInfo = false"
           >
-            Data Quality
+          <span class="ml-2 mr-2 "> Data Quality </span>
           </button>
         </div>
         <div class="mt-2">
@@ -117,11 +117,14 @@
   
   .tab-btn {
   padding: 6px 6px;
-  border: none;
+
 }
 
 .tab-btn.active {
-  font-weight: 500;
+  font-weight: 600;
+  border-top-left-radius: 10px; /* Rounded top left corner */
+  border-top-right-radius: 10px;
+  box-shadow: 10px 0px 4px rgba(0, 0, 0, 0.2); /* Add shadow only at the top */
 }
   </style>
   
