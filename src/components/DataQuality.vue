@@ -28,15 +28,17 @@
         <div v-if="Array.isArray(data.collection)">
           <span class="flex relative mb-2" v-for="(method, index) in data.collection" :key="index">
             <span class="mr-2">{{ method }} </span>
+            <span class="bg-cutty-sark-200 rounded-md items-center">
             <span v-if="method === 'Head of House Hold Survey'">
-              <img width="20" height="20" src="https://img.icons8.com/ios/50/survey.png" alt="survey"/>
+              <img class="m-1" width="20" height="20" src="https://img.icons8.com/ios/50/survey.png" alt="survey"/>
             </span>
             <span v-else-if="method === 'Key Informant Interviews'">
-              <img width="20" height="20" src="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/external-interview-news-xnimrodx-lineal-xnimrodx.png" alt="external-interview-news-xnimrodx-lineal-xnimrodx"/>
+              <img class="m-1" width="20" height="20" src="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/external-interview-news-xnimrodx-lineal-xnimrodx.png" alt="external-interview-news-xnimrodx-lineal-xnimrodx"/>
             </span>
             <span v-else-if="method === 'Administrative'">
-              <img width="20" height="20" src="https://img.icons8.com/external-others-made-by-made/50/external-administrative-government-others-made-by-made-36.png" alt="external-administrative-government-others-made-by-made-36"/>
+              <img class="m-1" width="20" height="20" src="https://img.icons8.com/external-others-made-by-made/50/external-administrative-government-others-made-by-made-36.png" alt="external-administrative-government-others-made-by-made-36"/>
             </span>
+          </span>
           </span>
         </div>
         <div v-else>
