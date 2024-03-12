@@ -2,10 +2,16 @@
      <div class="flex">
     <!-- Left Column -->
     <div class="w-1/2">
-      <div>
-
+      <!-- Date Repredenting -->
+      <div class="flex relative"> 
+        <div @mouseover="showDateInfo = true" @mouseleave="showDateInfo = false">
+        <h3 class="mb-2 ml-4"><span class="font-semibold">Date Representing (i): </span> </h3>
+        <div v-if="showDateInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+          {{ dateInfo }}
+        </div>
+        </div>
+        <span :class="timelinessColor">{{ data.timeliness }}</span>
       </div>
-      <h3 class="mb-2 ml-4"><span class="font-semibold">Date Representing:</span> <span :class="timelinessColor">{{ data.timeliness }}</span></h3>
       <h3 class="mb-2 ml-4"><span class="font-semibold">Updated:</span> <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
       <h3 class=" mb-2 ml-4"><span class="font-semibold">Other Versions: </span>
         <span class="text-cutty-sark-300" v-for="(version, index) in data.versions" :key="index">
@@ -47,7 +53,7 @@
     <div class="flex items-center relative">
       <div @mouseover="showGeoInfo = true" @mouseleave="showGeoInfo = false">
         <h3 class=" mb-2 font-semibold">Geographical Coverage (i):</h3>
-        <div v-if="showGeoInfo" class="geo-info absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+        <div v-if="showGeoInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
           {{ geoInfo }}
         </div>
       </div>
@@ -79,6 +85,13 @@
   </div>
     <!-- Confidence Levels and Margin of Error -->
     <div class="mt-4">
+      <div @mouseover="showCiInfo = true" @mouseleave="showCiInfo = false">
+          <h3 class="mb-2 font-semibold">Confidence Levels and Margin of Error(i):</h3>
+          <div v-if="showCiInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+              {{ ciInfo }}
+          </div>
+      </div>
+
         <table class="border-collapse border border-gray-400">
             <thead>
                 <tr>
@@ -109,7 +122,11 @@
       return {
         showCoverageInfo: false,
         showGeoInfo: false,
+        showCiInfo: false,
+        showDateInfo: false,
         geoInfo: 'This is the percentage of provinces that have been included in the study.',
+        ciInfo: 'Confidence levels indicate the probability that the true value of a parameter lies within a specified range while the margin of error quantifies the amount of random sampling error present in survey results. This is information has been taken from the Data Provider',
+        dateInfo: 'The earliest date and latest date included in the dataset',
       };
     },
     methods:{
@@ -196,14 +213,13 @@
     display: none;
   }
 
-  .geo-info {
-    top: calc(100% + 5px);
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
+  
+
+  :hover .tooltip-info{
+    display: block;
   }
 
-  :hover .geo-info{
+  :hover .ci-info{
     display: block;
   }
   
