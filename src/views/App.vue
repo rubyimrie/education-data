@@ -132,8 +132,8 @@
 </template>
 
 <script>
-import DataSource from './components/DataSource.vue'; // Import your DataSource component
-import FilterDataSource from './components/FilterDataSource.vue';
+import DataSource from '../components/DataSource.vue'; // Import your DataSource component
+import FilterDataSource from '../components/FilterDataSource.vue';
 
 export default {
   components: {
