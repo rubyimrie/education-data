@@ -8,7 +8,6 @@
     The aim of this site is to collate the data sources on Education in Afghanistan, providing a centralized platform for accessing and visualising the data quality of data sources 
     related to aspects of education in the country. By consolidating diverse data sources, the site aims to facilitate comprehensive research, inform evidence-based decision-making, and 
     contribute to the improvement of education policies and interventions in Afghanistan.
-    <router-link to="/education-data/userguide">User Guide</router-link>
   </p>
     </div>
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
@@ -112,6 +111,10 @@
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1.293-8.707a1 1 0 011.414 0L12 10.586l3.293-3.293a1 1 0 111.414 1.414L13.414 12l3.293 3.293a1 1 0 01-1.414 1.414L12 13.414l-3.293 3.293a1 1 0 01-1.414-1.414L10.586 12l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </span>
+            </div>
+            <div class="border border-gray-300 px-3 py-2 rounded-md bg-white flex relative hover:bg-slate-100">
+              <router-link to="/education-data/userguide">User Guide</router-link>
+              <img width="20" height="20" style="margin-left: 4px;" src="https://img.icons8.com/ios/50/user-manual.png" alt="user-manual"/>
             </div>
             <div>
               <select v-model="sortOrder" class="border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500">
