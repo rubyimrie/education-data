@@ -8,6 +8,7 @@
     The aim of this site is to collate the data sources on Education in Afghanistan, providing a centralized platform for accessing and visualising the data quality of data sources 
     related to aspects of education in the country. By consolidating diverse data sources, the site aims to facilitate comprehensive research, inform evidence-based decision-making, and 
     contribute to the improvement of education policies and interventions in Afghanistan.
+    <router-link to="/education-data/userguide">User Guide</router-link>
   </p>
     </div>
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
