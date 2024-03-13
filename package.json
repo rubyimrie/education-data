@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "travis": "^0.1.1",
-    "vue": "^3.4.15"
+    "vue": "^3.4.15",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.3",
