@@ -104,6 +104,10 @@
                 </svg>
               </span>
             </div>
+            <!-- Link to User Guide -->
+            <div class="flex justify-end mr-20 mb-5">
+              <router-link to="/education-data/user-guide" class="text-blue-500 hover:text-blue-700 underline">User Guide</router-link>
+            </div>
             <div>
               <select v-model="sortOrder" class="border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500">
                 <option value="recent">Newest first</option>
@@ -124,13 +128,15 @@
 </template>
 
 <script>
-import DataSource from './components/DataSource.vue'; // Import your DataSource component
-import FilterDataSource from './components/FilterDataSource.vue';
+import DataSource from '../components/DataSource.vue'; // Import your DataSource component
+import FilterDataSource from '../components/FilterDataSource.vue';
+import UserGuide from './user-guide.vue';
 
 export default {
   components: {
     DataSource,
-    FilterDataSource
+    FilterDataSource,
+    UserGuide
   },
   data() {
     return {
