@@ -134,8 +134,9 @@
       </div>
     </div>
   </div>
+  <hr>
     <!-- Confidence Levels and Margin of Error -->
-    <div class="mt-4">
+    <div class="mt-4 mb-4 ">
       <div @mouseover="showCiInfo = true" @mouseleave="showCiInfo = false">
           <h3 class="mb-2 font-semibold">Confidence Levels and Margin of Error(i):</h3>
           <div v-if="showCiInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
@@ -160,6 +161,41 @@
             </tbody>
         </table>
     </div>
+
+    <hr>
+
+    <!-- Disagregation -->
+    <div class="mt-4 flex  relative">
+    <div @mouseover="showDisInfo = true" @mouseleave="showDisInfo = false">
+          <h3 class="mb-2 font-semibold">Disagregation(i):</h3>
+          <div v-if="showDisInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+              {{ disInfo }}
+          </div>
+      </div>
+      <table class="border-collapse border border-gray-400 ml-4">
+        <thead>
+          <tr>
+            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Gender</th>
+            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+              </svg>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Disability</th>
+            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+              </svg>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
     </div>  
     </div>
   </template>
@@ -177,14 +213,17 @@
         showDateInfo: false,
         showInternalInfo: false,
         showExternalInfo: false,
+        showDisInfo: false,
         geoInfo: 'This is the percentage of provinces that have been included in the study.',
         ciInfo: 'Confidence levels indicate the probability that the true value of a parameter lies within a specified range while the margin of error quantifies the amount of random sampling error present in survey results. This is information has been taken from the Data Provider',
         dateInfo: 'The earliest date and latest date included in the dataset.',
         internalInfo: 'Internal Consistency implies no contradictions or discrepancies within the dataset itself',
         externalInfo: 'External Consistency implies no contradictions or discrepancies with other data sources. For the purpose of this website it has only been compared to other data sources on this website representing the same timeframe.',
+        disInfo: 'Disaggregation refers to breaking down data into smaller, more detailed components or categories for analysis.',
       };
     },
     methods:{
+    
       
     },
 
