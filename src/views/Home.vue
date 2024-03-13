@@ -1,15 +1,6 @@
 <template>
   <div class="bg-cutty-sark-100 flex flex-col ml-20 mr-20">
-    <div class="bg-cutty-sark-700">
-    <h1 class="text-5xl font-semibold mt-10 ml-20 mb-10  text-cutty-sark-50">Education in Afghanistan - The Data</h1>
-    </div>
-    <div class="bg-cutty-sark-500">
-    <p class="ml-20 mb-5 mt-5 text-white">
-    The aim of this site is to collate the data sources on Education in Afghanistan, providing a centralized platform for accessing and visualising the data quality of data sources 
-    related to aspects of education in the country. By consolidating diverse data sources, the site aims to facilitate comprehensive research, inform evidence-based decision-making, and 
-    contribute to the improvement of education policies and interventions in Afghanistan.
-  </p>
-    </div>
+    <PageHeading/>
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
@@ -116,6 +107,10 @@
               <router-link to="/education-data/userguide">User Guide</router-link>
               <img width="20" height="20" style="margin-left: 4px;" src="https://img.icons8.com/ios/50/user-manual.png" alt="user-manual"/>
             </div>
+            <div class="border border-gray-300 px-3 py-2 rounded-md bg-white flex relative hover:bg-slate-100">
+              <router-link to="/education-data/feedback">Feedback</router-link>
+              <img width="20" height="20" style="margin-left: 4px;" src="https://img.icons8.com/ios/50/filled-speech-bubble-with-dots--v1.png" alt="filled-speech-bubble-with-dots--v1"/>
+            </div>
             <div>
               <select v-model="sortOrder" class="border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500">
                 <option value="recent">Newest first</option>
@@ -138,11 +133,13 @@
 <script>
 import DataSource from '../components/DataSource.vue'; // Import your DataSource component
 import FilterDataSource from '../components/FilterDataSource.vue';
+import PageHeading from '../components/PageHeading.vue';
 
 export default {
   components: {
     DataSource,
-    FilterDataSource
+    FilterDataSource,
+    PageHeading
   },
   data() {
     return {
