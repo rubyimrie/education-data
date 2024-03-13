@@ -6,7 +6,7 @@ import Feedback from "@/views/Feedback.vue"
 
 const routes = [
   {
-    path: "/education-data",
+    path: "/education-data/",
     name: "Home",
     component: Home,
   },
