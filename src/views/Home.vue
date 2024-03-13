@@ -261,13 +261,6 @@ export default {
     clearSelectedTags() {
       this.selectedTags = [];
     },
-    scrollToMatchedDataSource() {
-      if (this.matchedIndex !== -1) {
-        this.$nextTick(() => {
-          this.$refs.dataSourceRefs[this.matchedIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-    },
     toggleTagFilter(tag) {
       if (this.isTagSelected(tag)) {
         this.selectedTags = this.selectedTags.filter(selectedTag => selectedTag !== tag);
@@ -412,9 +405,6 @@ export default {
         const sortedIndex = this.sortedDataSources.findIndex(source => source === newValue);
         const originalIndex = this.dataSources.findIndex(source => source === newValue);
         this.matchedIndex = sortedIndex;
-        this.$nextTick(() => {
-          this.$refs.dataSourceRefs[originalIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
       } else {
         this.matchedIndex = -1;
       }
@@ -454,7 +444,7 @@ export default {
     },
     matchedIndex(newIndex) {
       if (newIndex !== -1) {
-        this.scrollToMatchedDataSource();
+
       }
     }
   }
