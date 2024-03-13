@@ -174,58 +174,73 @@
               {{ disInfo }}
           </div>
       </div>
-      <table class="border-collapse border border-gray-400 ml-4">
-        <thead>
-          <tr>
-            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Sex</th>
-            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-              </svg>
-            </td>
-          </tr>
-          <tr>
-            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Disability</th>
-            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-              </svg>
-            </td>
-          </tr>
-          <tr>
-            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Provinces</th>
-            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-              </svg>
-            </td>
-          </tr>
-          <tr>
-            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Regions</th>
-            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-              </svg>
-            </td>
-          </tr>
-          <tr>
-            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Population Groups</th>
-            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-              </svg>
-            </td>
-          </tr>
-          <tr>
-            <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Urban/Rural</th>
-            <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-              <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
-              </svg>
-            </td>
-          </tr>
-        </thead>
-      </table>
+      <table class="border-collapse border border-gray-400">
+  <thead>
+    <tr>
+      <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Categories</th>
+      <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Included</th>
+      <th class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Sex</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold"></td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Disability</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold"></td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Provinces</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold"></td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Regions</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold"></td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Population Groups</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">
+        {{ data.populationGroups.join(', ') }}
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Urban/Rural</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold"></td>
+    </tr>
+  </tbody>
+</table>
 
 
   </div>

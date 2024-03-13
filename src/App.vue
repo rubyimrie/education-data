@@ -170,7 +170,7 @@ export default {
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
             disag:{gender:'TRUE',disability:'TRUE', provinces:'TRUE', regions:'TRUE', population:'TRUE', urbanrural:'TRUE '},
-            disagDetails:{ gender:['Male','Female'],population:{location:['Urban','Rural'],displacement:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']}},
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
           }
         },
         {
