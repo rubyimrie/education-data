@@ -98,8 +98,8 @@
               />
               <span v-if="!isMatched && searchQuery !== ''">Not found</span>
               <span v-if="isMatched" class="absolute inset-y-0 right-0 flex items-center pr-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 text-green-500">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1.293-8.707a1 1 0 011.414 0L12 10.586l3.293-3.293a1 1 0 111.414 1.414L13.414 12l3.293 3.293a1 1 0 01-1.414 1.414L12 13.414l-3.293 3.293a1 1 0 01-1.414-1.414L10.586 12l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                <svg class="h-4 w-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
                 </svg>
               </span>
             </div>
