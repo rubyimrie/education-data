@@ -169,7 +169,7 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:{gender:'TRUE',disability:'TRUE', provinces:'TRUE', regions:'TRUE', population:'TRUE', urbanrural:'TRUE '},
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
           }
         },
@@ -189,7 +189,8 @@ export default {
             available: 'FALSE',
             format: 'CSV',
             previous:[],
-            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees'],
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
           }
         },
         {
@@ -208,7 +209,8 @@ export default {
             format: 'XLSX',
             available: 'TRUE',
             previous:[],
-            tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees']
+            tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees'],
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
           }
         },
         {
@@ -227,7 +229,8 @@ export default {
             available: 'FALSE',
             previous:[],
             format: 'XLSX',
-            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees'],
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
           }
         },
       ],
