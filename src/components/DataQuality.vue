@@ -103,7 +103,7 @@
         </div>
       </div>
     <div class="ml-4 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
-      <div class="pie-chart-container">
+      <div class="pie-chart-container text-md">
         <svg viewBox="0 0 100 100" class="pie-chart">
           <!-- Circle representing the pie chart outline -->
           <circle cx="50" cy="50" r="45" fill="transparent" stroke="#ccc" stroke-width="6"></circle>
@@ -117,8 +117,8 @@
             stroke-linecap="round"
           ></path>
           <!-- Text displaying coverage percentage -->
-          <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" class="text-lg">
-            {{ coverage }}%
+          <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-size="23px">
+            {{ coverage }}% (i)
           </text>
         </svg>
         <!-- Coverage Info tooltip -->
