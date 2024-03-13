@@ -6,14 +6,14 @@
     <div class="bg-cutty-sark-500">
     <p class="ml-20 mb-5 mt-5 text-white">
     The aim of this site is to collate the data sources on Education in Afghanistan, providing a centralized platform for accessing and visualising the data quality of data sources 
-    related to various aspects of education in the country. By consolidating diverse data sources, the site aims to facilitate comprehensive research, inform evidence-based decision-making, and 
+    related to aspects of education in the country. By consolidating diverse data sources, the site aims to facilitate comprehensive research, inform evidence-based decision-making, and 
     contribute to the improvement of education policies and interventions in Afghanistan.
   </p>
     </div>
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
-        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(180vh - 150px);">
+        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(250vh);">
           <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
           <div class="  flex-col h-screen ml-5 mb-5 ">
@@ -67,6 +67,14 @@
                   <label v-for="updated in availableUpdated" :key="updated" class="flex items-center">
                     <input type="checkbox" v-model="selectedUpdated" :value="updated" class="mr-2">
                     {{ updated }}
+                  </label>
+                </div>
+                <!-- Disagregated Filter -->
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2">Disaggregated By</h3>
+                  <label v-for="dis in availableDisag" :key="dis" class="flex items-center">
+                    <input type="checkbox" v-model="selectedDisag" :value="dis" class="mr-2">
+                    {{ dis }}
                   </label>
                 </div>
                 <!-- Tags -->
@@ -143,6 +151,7 @@ export default {
       selectedProviders: [], // Define selectedProviders array
       selectedUpdated: [],
       selectedTags: [], 
+      selectedDisag: [], 
       matchedIndex: -1, // Define matchedIndex property
       dataSources: [
         {
@@ -151,7 +160,7 @@ export default {
             date: '2022-09-20',
             published: '06/02/2023',
             year: '2022',
-            content: 'The Whole of Afghanistan Assessment 2022 (Annual WoAA 2022) is a multi sectoral need assessment, conducted based on in-person household-level interviews. This data consists the results collected from the head of household across the country, and provides data on household`s different sectoral and intersectoral needs such as health, education, nutrition, WASH, food security, shocks, protection, and so on. ',
+            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
             coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
             timeliness: '30/07/2022 - 04/09/2022',
@@ -164,72 +173,72 @@ export default {
             available: 'FALSE',
             datatype: 'National',
             provider: 'REACH',
-            versions:['2021','2023'],
+            versions:['Whole of Afghanistan Assessment 2021','Whole of Afghanistan Assessment 2023'],
             confidence:{national:95,urban:90,rural:90,refugee:90},
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:{gender:'TRUE',disability:'TRUE', provinces:'TRUE', regions:'TRUE', population:'TRUE', urbanrural:'TRUE '},
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
           }
         },
         {
-          title: 'SDG4 Data Explorer',
+          title: 'Whole of Afghanistan Assessment 2023',
           data: {
-            date: '2024-02-22',
-            year: '2021',
-            content: 'Mock Summary text',
-            coverage: 90,
+            date: '2023-09-20',
+            published: '06/02/2023',
+            year: '2023',
+            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
+            coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            collection: ['Administrative'],
-            timeliness: '95%',
-            updated: 'Never',
-            datatype: 'Global',
-            provider: 'UNESCO',
+            timeliness: '30/07/2022 - 04/09/2022',
+            format: 'XLSX',
+            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
+            updated: 'Yearly',
+            collection: ['Head of House Hold Survey','Key Informant Interviews'],
+            samplesize:['17,262','10,529'],
+            internal: 'TRUE',
             available: 'FALSE',
-            format: 'CSV',
-            previous:[],
-            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
-          }
-        },
-        {
-          title: 'Data Source 3-b ',
-          data: {
-            date: '2024-02-22',
-            year: '2022',
-            content: 'Mock Summary text.',
-            coverage: 90,
-            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            timeliness: '95%',
-            updated: 'Never',
-            collection: ['Administrative'],
             datatype: 'National',
-            provider: 'WHO',
-            format: 'XLSX',
-            available: 'TRUE',
-            previous:[],
-            tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees']
+            provider: 'REACH',
+            versions:['Whole of Afghanistan Assessment 2021','Whole of Afghanistan Assessment 2023'],
+            confidence:{national:95,urban:90,rural:90,refugee:90},
+            margin:{national:5,urban:9,rural:9,refugee:7},
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
+            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
           }
         },
         {
-          title: 'Data Source 3',
+          title: 'Whole of Afghanistan Assessment 2021',
           data: {
-            date: '2024-02-22',
+            date: '2021-09-20',
+            published: '06/02/2023',
             year: '2021',
-            content: 'Mock Summary text',
-            coverage: 90,
+            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
+            coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            collection: ['Project Based'],
-            timeliness: '95%',
-            updated: 'Never',
-            datatype: 'Global',
-            provider: 'Unicef',
-            available: 'FALSE',
-            previous:[],
+            timeliness: '30/07/2022 - 04/09/2022',
             format: 'XLSX',
-            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees']
+            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
+            updated: 'Yearly',
+            collection: ['Head of House Hold Survey','Key Informant Interviews'],
+            samplesize:['17,262','10,529'],
+            internal: 'TRUE',
+            available: 'FALSE',
+            datatype: 'National',
+            provider: 'REACH',
+            versions:['Whole of Afghanistan Assessment 2021','Whole of Afghanistan Assessment 2023'],
+            confidence:{national:95,urban:90,rural:90,refugee:90},
+            margin:{national:5,urban:9,rural:9,refugee:7},
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
+            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
           }
-        },
+        }, 
+        
       ],
       matchedIndex: -1
     };
@@ -246,6 +255,7 @@ export default {
       this.selectedProviders = [];
       this.selectedAvailability = [];
       this.selectedTags = []; 
+      this.selectedDisag = [];
     },
     clearSelectedTags() {
       this.selectedTags = [];
@@ -330,6 +340,13 @@ export default {
       });
       return Array.from(tags);
     },
+  availableDisag() {
+      const disag = new Set();
+      this.dataSources.forEach(source => {
+        source.data.disag.forEach(d => disag.add(d));
+      });
+      return Array.from(disag);
+    },
   matchedDataSourceSearch() {
       if (!this.searchQuery.trim()) return null;
       const query = this.searchQuery.trim().toLowerCase();
@@ -359,6 +376,11 @@ export default {
     }
     if (this.selectedUpdated.length > 0) {
       filteredData = filteredData.filter(source => this.selectedUpdated.includes(source.data.updated));
+    }
+    if (this.selectedDisag.length > 0) {
+      filteredData = filteredData.filter(source => {
+        return this.selectedDisag.some(disag => source.data.disag.includes(disag));
+      });
     }
      // Filter by selected tags
      if (this.selectedTags.length > 0) {
