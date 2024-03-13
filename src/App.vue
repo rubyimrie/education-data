@@ -13,7 +13,7 @@
     <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
-        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(180vh - 150px);">
+        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(250vh);">
           <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
           <div class="  flex-col h-screen ml-5 mb-5 ">
@@ -67,6 +67,14 @@
                   <label v-for="updated in availableUpdated" :key="updated" class="flex items-center">
                     <input type="checkbox" v-model="selectedUpdated" :value="updated" class="mr-2">
                     {{ updated }}
+                  </label>
+                </div>
+                <!-- Disagregated Filter -->
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2">Disaggregated By</h3>
+                  <label v-for="dis in availableDisag" :key="dis" class="flex items-center">
+                    <input type="checkbox" v-model="selectedDisag" :value="dis" class="mr-2">
+                    {{ dis }}
                   </label>
                 </div>
                 <!-- Tags -->
@@ -143,6 +151,7 @@ export default {
       selectedProviders: [], // Define selectedProviders array
       selectedUpdated: [],
       selectedTags: [], 
+      selectedDisag: [], 
       matchedIndex: -1, // Define matchedIndex property
       dataSources: [
         {
@@ -190,7 +199,7 @@ export default {
             format: 'CSV',
             previous:[],
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Refugees'],
-            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            disag:['gender'],
           }
         },
         {
@@ -210,7 +219,7 @@ export default {
             available: 'TRUE',
             previous:[],
             tags:['Displacement','Education','Food','Security','Health','Needs Assessment','Population','Refugees'],
-            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            disag:['regions','population','urbanrural'],
           }
         },
         {
@@ -249,6 +258,7 @@ export default {
       this.selectedProviders = [];
       this.selectedAvailability = [];
       this.selectedTags = []; 
+      this.selectedDisag = [];
     },
     clearSelectedTags() {
       this.selectedTags = [];
@@ -333,6 +343,13 @@ export default {
       });
       return Array.from(tags);
     },
+  availableDisag() {
+      const disag = new Set();
+      this.dataSources.forEach(source => {
+        source.data.disag.forEach(d => disag.add(d));
+      });
+      return Array.from(disag);
+    },
   matchedDataSourceSearch() {
       if (!this.searchQuery.trim()) return null;
       const query = this.searchQuery.trim().toLowerCase();
@@ -362,6 +379,11 @@ export default {
     }
     if (this.selectedUpdated.length > 0) {
       filteredData = filteredData.filter(source => this.selectedUpdated.includes(source.data.updated));
+    }
+    if (this.selectedDisag.length > 0) {
+      filteredData = filteredData.filter(source => {
+        return this.selectedDisag.some(disag => source.data.disag.includes(disag));
+      });
     }
      // Filter by selected tags
      if (this.selectedTags.length > 0) {
