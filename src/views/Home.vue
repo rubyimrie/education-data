@@ -355,7 +355,7 @@ export default {
     this.dataSources.forEach(source => {
       years.add(source.data.year);
     });
-    return Array.from(years);
+    return Array.from(years).sort();
   },
   availableCollections() {
   const collections = new Set();
@@ -364,7 +364,7 @@ export default {
       collections.add(collection);
     });
   });
-  return Array.from(collections);
+  return Array.from(collections).sort();
 },
   availableTypes() {
     const types = new Set();
@@ -385,7 +385,7 @@ export default {
     this.dataSources.forEach(source => {
       providers.add(source.data.provider);
     });
-    return Array.from(providers);
+    return Array.from(providers).sort();
   },
   availableUpdated() {
     const updated = new Set();
@@ -406,7 +406,7 @@ export default {
       this.dataSources.forEach(source => {
         source.data.disag.forEach(d => disag.add(d));
       });
-      return Array.from(disag);
+      return Array.from(disag).sort();
     },
   matchedDataSourceSearch() {
       if (!this.searchQuery.trim()) return null;
