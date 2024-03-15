@@ -238,7 +238,7 @@
     <tr>
       <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Population Groups</td>
       <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-        <svg v-if="data.disag.includes('regions')" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <svg v-if="data.disag.includes('population')" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
         </svg>
         <!-- If 'regions' is not present in 'disag', display the cross icon -->
@@ -248,6 +248,36 @@
       </td>
       <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">
         {{ data.populationGroups.join(', ') }}
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Education Level</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg v-if="data.disag.includes('education')" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+        <!-- If 'regions' is not present in 'disag', display the cross icon -->
+        <svg v-else class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">
+        {{ data.educationGroups.join(', ') }}
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Age Groups</td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
+        <svg v-if="data.disag.includes('age')" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
+        </svg>
+        <!-- If 'regions' is not present in 'disag', display the cross icon -->
+        <svg v-else class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path fill="#F44336" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm4.95 12.121l-1.414 1.415L10 11.414l-3.536 3.536-1.414-1.415L8.586 10l-3.535-3.536 1.414-1.415L10 8.586l3.536-3.535 1.414 1.414L11.414 10l3.536 3.536z"/>
+        </svg>
+      </td>
+      <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">
+        {{ data.ageGroups.join(', ') }}
       </td>
     </tr>
     <tr>
@@ -286,7 +316,7 @@
         showInternalInfo: false,
         showExternalInfo: false,
         showDisInfo: false,
-        geoInfo: 'This is the percentage of provinces that have been included in the study. Hover over the pie chart to find out more',
+        geoInfo: 'This is the percentage of provinces that have been included in the study. Hover over the pie chart to find out more.',
         ciInfo: 'Confidence levels indicate the probability that the true value of a parameter lies within a specified range while the margin of error quantifies the amount of random sampling error present in survey results. This is information has been taken from the Data Provider',
         dateInfo: 'The earliest date and latest date included in the dataset.',
         internalInfo: 'Internal Consistency implies no contradictions or discrepancies within the dataset itself',

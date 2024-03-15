@@ -53,7 +53,7 @@
                   </label>
                 </div>
                 <!-- Updated Filter -->
-                <div>
+                <div class="mb-4">
                   <h3 class="text-lg font-semibold mb-2">Updated</h3>
                   <label v-for="updated in availableUpdated" :key="updated" class="flex items-center">
                     <input type="checkbox" v-model="selectedUpdated" :value="updated" class="mr-2">
@@ -159,12 +159,12 @@ export default {
           title: 'Whole of Afghanistan Assessment 2021',
           data: {
             date: '2021-09-20',
-            published: '06/02/2023',
+            published: '06/02/2022',
             year: '2021',
             content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
             coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            timeliness: '30/07/2022 - 04/09/2022',
+            timeliness: '30/07/2021 - 04/09/2021',
             format: 'XLSX',
             link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
             updated: 'Yearly',
@@ -174,13 +174,45 @@ export default {
             available: 'FALSE',
             datatype: 'National',
             provider: 'REACH',
-            versions:['Whole of Afghanistan Assessment 2021','Whole of Afghanistan Assessment 2023'],
+            versions:['Whole of Afghanistan Assessment 2022','Whole of Afghanistan Assessment 2023'],
             confidence:{national:95,urban:90,rural:90,refugee:90},
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
             disag:['gender','disability','provinces','regions','population','urbanrural'],
-            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
+            educationGroups:[],
+            ageGroups:[],
+          }
+        },
+        {
+          title: 'UNESCO SDG4  Data Explorer 2021 (Mock)',
+          data: {
+            date: '2021-09-20',
+            published: '25/04/2022',
+            year: '2021',
+            content: 'The SDG4 Data Explorer is a digital platform providing comprehensive access to data and statistics related to Sustainable Development Goal 4 (SDG4) on quality education, facilitating analysis and monitoring of progress towards achieving educational targets globally.',
+            coverage: 95,
+            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
+            timeliness: '30/07/2021 - 04/09/2021',
+            format: 'CSV',
+            link: 'http://sdg4-data.uis.unesco.org/',
+            updated: 'Yearly',
+            collection: ['Administrative'],
+            samplesize:['NA'],
+            internal: 'TRUE',
+            available: 'TRUE',
+            datatype: 'Global',
+            provider: 'UNESCO',
+            versions:['SDG4 2015'],
+            confidence:{national:95,urban:90,rural:90,refugee:90},
+            margin:{national:5,urban:9,rural:9,refugee:7},
+            tags:['Education','Government Expenditure','Out of School Rates','Participation Rate','Educational Attainment Rate','Youth literacy rate','Population','Refugees','Electricity','Sanitation','Drinking Water','Sanitation'],
+            fields:'Government expenditure on education as a percentage of GDP (%),Expenditure on education as a percentage of total government expenditure (%), Gross intake ratio to the last grade, Out-of-school rate, Participation rate of youth and adults, Educational attainment rate, adjusted gender parity index (GPIA), Youth literacy rate, Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in curricula,Proportion of schools with single-sex basic sanitation facilities (%), Proportion of schools with basic handwashing facilities (%), Proportion of  with access to electricity (%),Proportion of schools with access to basic drinking water (%), Volume of official development assistance flows for scholarships by sector and type of study, constant US$, Percentage of qualified teachers',
+            disag:['gender','provinces','regions','urbanrural','population','education','age'],
+            populationGroups:['Richest Quintile','Second Quintile','Middle Quintline','Fourth Quintile','Poorest Quintile'],
+            educationGroups:['Primary','Lower Secondary','Upper Secondary'],
+            ageGroups:['16-24','25+'],
           }
         },
         {
@@ -207,8 +239,40 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
+            disag:['gender','disability','provinces','regions','population','urbanrural','age'],
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
+            educationGroups:[],
+            ageGroups:['Children Under 2','Children Under 5'],
+          }
+        },
+        {
+          title: 'EMIS 2022 (Mock)',
+          data: {
+            date: '2022-07-20',
+            published: '20/01/2023',
+            year: '2022',
+            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
+            coverage: 98.72,
+            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
+            timeliness: '30/07/2022 - 04/09/2022',
+            format: 'XLSX',
+            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
+            updated: 'Yearly',
+            collection: ['Head of House Hold Survey','Key Informant Interviews'],
+            samplesize:['17,262','10,529'],
+            internal: 'TRUE',
+            available: 'FALSE',
+            datatype: 'National',
+            provider: 'EMIS',
+            versions:['EMIS 2021','EMIS 2023'],
+            confidence:{national:95,urban:90,rural:90,refugee:90},
+            margin:{national:5,urban:9,rural:9,refugee:7},
+            tags:['Children','Education','Gender'],
+            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
             disag:['gender','disability','provinces','regions','population','urbanrural'],
-            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
+            educationGroups:[],
+            ageGroups:[],
           }
         },
         {
@@ -236,7 +300,9 @@ export default {
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
             disag:['gender','disability','provinces','regions','population','urbanrural'],
-            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
+            educationGroups:[],
+            ageGroups:[],
           }
         },
          
@@ -329,12 +395,12 @@ export default {
     return Array.from(updated);
   },
   availableTags() {
-      const tags = new Set();
-      this.dataSources.forEach(source => {
-        source.data.tags.forEach(tag => tags.add(tag));
-      });
-      return Array.from(tags);
-    },
+    const tags = new Set();
+    this.dataSources.forEach(source => {
+      source.data.tags.forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  },
   availableDisag() {
       const disag = new Set();
       this.dataSources.forEach(source => {
