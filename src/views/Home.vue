@@ -251,7 +251,7 @@ export default {
             date: '2022-07-20',
             published: '20/01/2023',
             year: '2022',
-            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
+            content: 'EMIS data refers to Education Management Information System data, which encompasses comprehensive information collected and managed by educational institutions, governments, or organizations to facilitate efficient decision-making and policy formulation within the education sector.',
             coverage: 98.72,
             coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
             timeliness: '30/07/2022 - 04/09/2022',
