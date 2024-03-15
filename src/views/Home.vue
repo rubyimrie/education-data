@@ -155,6 +155,34 @@ export default {
       selectedDisag: [], 
       matchedIndex: -1, // Define matchedIndex property
       dataSources: [
+      {
+          title: 'Whole of Afghanistan Assessment 2021',
+          data: {
+            date: '2021-09-20',
+            published: '06/02/2023',
+            year: '2021',
+            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
+            coverage: 98.72,
+            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
+            timeliness: '30/07/2022 - 04/09/2022',
+            format: 'XLSX',
+            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
+            updated: 'Yearly',
+            collection: ['Head of House Hold Survey','Key Informant Interviews'],
+            samplesize:['17,262','10,529'],
+            internal: 'TRUE',
+            available: 'FALSE',
+            datatype: 'National',
+            provider: 'REACH',
+            versions:['Whole of Afghanistan Assessment 2021','Whole of Afghanistan Assessment 2023'],
+            confidence:{national:95,urban:90,rural:90,refugee:90},
+            margin:{national:5,urban:9,rural:9,refugee:7},
+            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
+            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
+            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
+          }
+        },
         {
           title: 'Whole of Afghanistan Assessment 2022',
           data: {
@@ -211,34 +239,7 @@ export default {
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
           }
         },
-        {
-          title: 'Whole of Afghanistan Assessment 2021',
-          data: {
-            date: '2021-09-20',
-            published: '06/02/2023',
-            year: '2021',
-            content: 'The Annual Whole of Afghanistan Assessment 2022 (WoAA 2022) is a comprehensive survey conducted through in-person interviews with households across Afghanistan. It gathers data on various aspects of household needs, including health, education, nutrition, water, sanitation, hygiene (WASH), food security, as well as vulnerabilities to shocks and protection concerns. ',
-            coverage: 98.72,
-            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            timeliness: '30/07/2022 - 04/09/2022',
-            format: 'XLSX',
-            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
-            updated: 'Yearly',
-            collection: ['Head of House Hold Survey','Key Informant Interviews'],
-            samplesize:['17,262','10,529'],
-            internal: 'TRUE',
-            available: 'FALSE',
-            datatype: 'National',
-            provider: 'REACH',
-            versions:['Whole of Afghanistan Assessment 2021','Whole of Afghanistan Assessment 2023'],
-            confidence:{national:95,urban:90,rural:90,refugee:90},
-            margin:{national:5,urban:9,rural:9,refugee:7},
-            tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
-            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:['gender','disability','provinces','regions','population','urbanrural'],
-            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced']
-          }
-        }, 
+         
         
       ],
       matchedIndex: -1
