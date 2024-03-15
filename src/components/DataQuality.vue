@@ -5,7 +5,7 @@
       <!-- Date Repredenting -->
       <div class="flex relative items-center"> 
         <div @mouseover="showDateInfo = true" @mouseleave="showDateInfo = false">
-        <h3 class="mb-2 ml-4 mr-2"><span class="font-semibold">Date Representing (i): </span> </h3>
+        <h3 class="mb-2 ml-4 mr-2 flex relative"><span class="font-semibold">Date Representing </span> <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:   </h3>
         <div v-if="showDateInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ dateInfo }}
         </div>
@@ -61,7 +61,7 @@
       <!-- Internal Consistency -->
       <div class="flex items-center mt-2">
         <div @mouseover="showInternalInfo = true" @mouseleave="showInternalInfo = false">
-        <h3 class="mb-2 ml-4"><span class="font-semibold">Internally Consistency (i): </span> </h3>
+        <h3 class="mb-2 ml-4 flex relative"><span class="font-semibold">Internally Consistency</span><img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>: </h3>
         <div v-if="showInternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ internalInfo }}
         </div>
@@ -79,7 +79,7 @@
     <!-- External Consistency -->
     <div class="flex items-center">
       <div @mouseover="showExternalInfo = true" @mouseleave="showExternalInfo = false">
-        <h3 class="mb-2 ml-4"><span class="font-semibold">External Consistency (i): </span> </h3>
+        <h3 class="mb-2 ml-4 flex relative"><span class="font-semibold">External Consistency</span><img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
         <div v-if="showExternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ externalInfo }}
         </div>
@@ -97,7 +97,7 @@
     <hr>
     <div class="flex items-center relative ml-4 mt-2">
       <div @mouseover="showGeoInfo = true" @mouseleave="showGeoInfo = false">
-        <h3 class=" mb-2 font-semibold">Geographical Coverage (i):</h3>
+        <h3 class=" mb-2 font-semibold flex relative">Geographical Coverage <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
         <div v-if="showGeoInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ geoInfo }}
         </div>
@@ -140,7 +140,7 @@
     <!-- Confidence Levels and Margin of Error -->
     <div class="mt-4 mb-4 ">
       <div @mouseover="showCiInfo = true" @mouseleave="showCiInfo = false">
-          <h3 class="mb-2 font-semibold">Confidence Levels and Margin of Error(i):</h3>
+          <h3 class="mb-2 font-semibold flex relative">Confidence Levels and Margin of Error <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
           <div v-if="showCiInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
               {{ ciInfo }}
           </div>
@@ -169,7 +169,7 @@
     <!-- Disagregation -->
     <div class="mt-4">
     <div @mouseover="showDisInfo = true" @mouseleave="showDisInfo = false">
-          <h3 class="mb-2 font-semibold">Disagregation(i):</h3>
+          <h3 class="mb-2 font-semibold flex relative">Disagregation <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
           <div v-if="showDisInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
               {{ disInfo }}
           </div>
@@ -286,7 +286,7 @@
         showInternalInfo: false,
         showExternalInfo: false,
         showDisInfo: false,
-        geoInfo: 'This is the percentage of provinces that have been included in the study.',
+        geoInfo: 'This is the percentage of provinces that have been included in the study. Hover over the pie chart to find out more',
         ciInfo: 'Confidence levels indicate the probability that the true value of a parameter lies within a specified range while the margin of error quantifies the amount of random sampling error present in survey results. This is information has been taken from the Data Provider',
         dateInfo: 'The earliest date and latest date included in the dataset.',
         internalInfo: 'Internal Consistency implies no contradictions or discrepancies within the dataset itself',
