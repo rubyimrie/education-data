@@ -30,7 +30,7 @@
                 </div>
                 <!-- Collection Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Collection</h3>
+                  <h3 class="text-lg font-semibold mb-2">Collection Method</h3>
                   <label v-for="collection in availableCollections" :key="collection" class="flex items-center">
                     <input type="checkbox" v-model="selectedCollections" :value="collection" class="mr-2">
                     {{ collection }}
@@ -46,7 +46,7 @@
                 </div>
                 <!-- Provider Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Provider</h3>
+                  <h3 class="text-lg font-semibold mb-2">Data Provider</h3>
                   <label v-for="provider in availableProviders" :key="provider" class="flex items-center">
                     <input type="checkbox" v-model="selectedProviders" :value="provider" class="mr-2">
                     {{ provider }}
