@@ -10,14 +10,14 @@
             :class="{ 'active': showDataInfo }"
             @click="showDataInfo = true"
           >
-          <span class="ml-2 mr-2 font-semibold" >The Data</span>
+          <span class="ml-2 mr-2 font-semibold text-black" >The Data</span>
           </button>
           <button 
-            class="tab-btn focus:outline-none ont-weight-500"
+            class="tab-btn focus:outline-none font-weight-500"
             :class="{ 'active': !showDataInfo }"
             @click="showDataInfo = false"
           >
-          <span class="ml-2 mr-2 font-semibold"> Data Quality </span>
+          <span class="ml-2 mr-2 font-semibold text-black"> Data Quality </span>
           </button>
         </div>
         <div class="mt-2">

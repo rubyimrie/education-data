@@ -1,5 +1,5 @@
 <template>
-     <div class="flex">
+     <div class="flex text-black">
     <!-- Left Column -->
     <div class="w-1/2">
       <!-- Date Repredenting -->
