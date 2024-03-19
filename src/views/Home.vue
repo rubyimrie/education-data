@@ -7,7 +7,7 @@
         <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(250vh);">
           <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
-          <div class="  flex-col h-screen ml-5 mb-5 ">
+          <div class="  flex-col h-screen ml-5 mb-5 default text-black">
             <div class="container mx-auto px-4 py-8 flex-grow flex">
               <div class="pr-4">
                 <!-- Button -->
@@ -520,4 +520,6 @@ export default {
 
 <style>
 /* Add your global styles here */
+.default
+    {color: black;}
 </style>

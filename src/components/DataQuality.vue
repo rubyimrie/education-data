@@ -1,5 +1,5 @@
 <template>
-     <div class="flex text-black">
+     <div class="default">
     <!-- Left Column -->
     <div class="w-1/2">
       <!-- Date Repredenting -->
@@ -422,6 +422,9 @@
   .pie-chart-container:hover .coverage-info{
     display: block;
   }
+
+  .default
+    {color: black;}
 
   </style>
   
