@@ -1,9 +1,8 @@
 <template>
   
   <div class="bg-cutty-sark-700">
-    <div class="">
-      
-      <h1 class="text-5xl font-semibold mt-10 ml-20 mb-10 text-cutty-sark-50">Education in Afghanistan - The Data</h1>
+    <div class="container mx-auto px-10 py-5">
+        <p class="text-5xl font-semibold mt-10 ml-10 mb-10 text-cutty-sark-50">Education in Afghanistan - The Data</p>
     </div>
     <div class="bg-cutty-sark-500">
     <div class="container mx-auto px-10 py-5">
