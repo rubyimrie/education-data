@@ -1,7 +1,7 @@
 <template>
-     <div class="default">
+     <div class="container text-black ">
     <!-- Left Column -->
-    <div class="w-1/2">
+    <div class="column ">
       <!-- Date Repredenting -->
       <div class="flex relative items-center"> 
         <div @mouseover="showDateInfo = true" @mouseleave="showDateInfo = false">
@@ -135,7 +135,7 @@
     <div class="w-px bg-gray-200 mx-4"></div>
 
     <!-- Right Column -->
-    <div class="w-1/2">
+    <div class="column">
 
     <!-- Confidence Levels and Margin of Error -->
     <div class="mt-4 mb-4 ">
@@ -423,8 +423,14 @@
     display: block;
   }
 
-  .default
-    {color: black;}
+  .container
+    {color: black;
+      display: flex;}
+
+  .column {
+    flex: 1; /* Each column takes up equal space */
+    padding: 10px; /* Add padding as needed */
+  }
 
   </style>
   
