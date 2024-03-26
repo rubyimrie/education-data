@@ -14,11 +14,16 @@
                 <button @click="resetFilters" class="text-cutty-sark-600 hover:text-cutty-sark-700 underline">Reset Filters</button>
                 <!-- Year Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Year</h3>
-                  <label v-for="year in availableYears" :key="year" class="flex items-center">
-                    <input type="checkbox" v-model="selectedYears" :value="year" class="mr-2">
-                    {{ year }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleYearFilter">
+                    Year
+                    <span v-html="isYearFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isYearFilterCollapsed" class="ml-4">
+                    <label v-for="year in availableYears" :key="year" class="flex items-center">
+                      <input type="checkbox" v-model="selectedYears" :value="year" class="mr-2">
+                      {{ year }}
+                    </label>
+                  </div>
                 </div>
                 <!-- Type Filter -->
                 <div class="mb-4">
@@ -154,6 +159,10 @@ export default {
       selectedTags: [], 
       selectedDisag: [], 
       matchedIndex: -1, // Define matchedIndex property
+      isYearFilterCollapsed: false,
+      // Define other collapsed states for other filter sections
+      chevronUpIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>',
+      chevronDownIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>',
       dataSources: [
       {
           title: 'Whole of Afghanistan Assessment 2021',
@@ -463,7 +472,10 @@ export default {
       sorted.sort((a, b) => new Date(a.data.date) - new Date(b.data.date));
     }
     return sorted;
-  }
+  },
+  toggleYearFilter() {
+      this.isYearFilterCollapsed = !this.isYearFilterCollapsed;
+    },
 
   },
   watch: {
