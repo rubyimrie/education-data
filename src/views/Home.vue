@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-cutty-sark-100 flex flex-col ml-20 mr-20">
-    <PageHeading/>
-    <div class="container mx-auto px-4 py-8 flex-grow xl:max-w-screen-xl h-auto">
+  <div class="bg-cutty-sark-100 flex flex-col ml-20 mr-20 grid-container  min-w-[1200px]">
+    <PageHeading />
+    <div class="container mx-auto px-4 py-8 flex-grow  h-auto  min-w-[1100px]">
       <div class="gap-8 grid grid-cols-12">
         <!-- First column -->
-        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200 sticky" style="height: calc(250vh);">
+        <div class="col-span-4 flex-col pr-4 bg-cutty-sark-200  min-w-[170px]  ml-6" style="height: calc(250vh);">
           <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
           <div class="  flex-col h-screen ml-5 mb-5 default text-black">
@@ -131,7 +131,7 @@
         </div>
 
         <!-- Second column -->
-        <div class="col-span-9">
+        <div class="col-span-8 md:min-w-screen-md  min-w-[750px] mr-6">
           <div class="flex justify-between items-center mb-4">
             <div class="relative">
               <input
@@ -608,4 +608,10 @@ export default {
 /* Add your global styles here */
 .default
     {color: black;}
+
+.grid-container{
+  overflow-x:auto;
+}
+
+
 </style>
