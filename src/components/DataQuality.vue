@@ -98,6 +98,7 @@
     </div>
     </div>
     <hr>
+    <!-- Geographical Coverage -->
     <div class="flex items-center relative ml-4 mt-2">
       <div @mouseover="showGeoInfo = true" @mouseleave="showGeoInfo = false">
         <h3 class=" mb-2 font-semibold flex relative">Geographical Coverage <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
@@ -107,9 +108,9 @@
       </div>
     <div class="ml-4 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
       <div class="pie-chart-container text-md">
-        <svg viewBox="0 0 100 100" class="pie-chart">
+        <svg viewBox="0 0 200 200" class="pie-chart">
           <!-- Circle representing the pie chart outline -->
-          <circle cx="50" cy="50" r="45" fill="transparent" stroke="#ccc" stroke-width="6"></circle>
+          <circle cx="100" cy="100" r="90" fill="transparent" stroke="#ccc" stroke-width="6"></circle>
           <!-- Arc representing the coverage -->
           <path 
             v-if="coverage > 0" 
@@ -120,8 +121,8 @@
             stroke-linecap="round"
           ></path>
           <!-- Text displaying coverage percentage -->
-          <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-size="23px">
-            {{ coverage }}% (i)
+          <text x="100" y="100" text-anchor="middle" dominant-baseline="middle" font-size="30px">
+            {{ coverage }}% [i]
           </text>
         </svg>
         <!-- Coverage Info tooltip -->
@@ -337,25 +338,25 @@
         return parseInt(this.data.coverage);
       },
       piePath() {
-        const radius = 45;
-        const x = 50;
-        const y = 50;
+        const radius = 90; // Increase the radius to make the pie chart bigger
+        const x = 100; // Center x-coordinate of the circle
+        const y = 100; // Center y-coordinate of the circle
         const startAngle = -90; // Start angle at 12 o'clock
         const endAngle = (this.coverage / 100) * 360 - 90; // Convert coverage to angle
         const largeArcFlag = this.coverage > 50 ? 1 : 0; // Whether to draw the large arc
-  
+
         // Calculate the end point of the arc
         const endX = x + radius * Math.cos((endAngle * Math.PI) / 180);
         const endY = y + radius * Math.sin((endAngle * Math.PI) / 180);
-  
+
         // Construct the SVG path string for the arc
         const pathData = [
-          `M ${x} ${y - radius}`, // Move to top point of circle
-          `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`, // Arc to the end point
+            `M ${x} ${y - radius}`, // Move to top point of circle
+            `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`, // Arc to the end point
         ].join(' ');
-  
+
         return pathData;
-      },
+    },
       coverageColor() {
         if (this.coverage >= 90) {
           return '#4CAF50';
@@ -389,8 +390,8 @@
     margin-left: 5px;
     }
   .pie-chart-container {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     margin-left: 10px; /* Add space between heading and pie chart */
     position: relative; /* Position for absolute tooltip */
   }
