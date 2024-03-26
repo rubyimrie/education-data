@@ -5,15 +5,18 @@
       <!-- Date Repredenting -->
       <div class="flex relative items-center"> 
         <div @mouseover="showDateInfo = true" @mouseleave="showDateInfo = false">
-        <h3 class="mb-2 ml-4 mr-2 flex relative"><span class="font-semibold">Date Representing </span> <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:   </h3>
-        <div v-if="showDateInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
-          {{ dateInfo }}
-        </div>
+            <h3 class="mb-2 ml-4 mr-2 flex relative items-center">
+                <span class="font-semibold">Date Representing </span> 
+                <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:
+            </h3>
+            <div v-if="showDateInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
+                {{ dateInfo }}
+            </div>
         </div>
         <div class="rounded-md bg-cutty-sark-200 items-center">
-        <span class="ml-1 mr-2">{{ data.timeliness }}</span>
+            <span class="ml-1 mr-2">{{ data.timeliness }}</span>
         </div>
-      </div>
+    </div>
       <!-- Updated -->
       <div class="flex relative ">
         <h3 class="mb-2 ml-4"><span class="font-semibold">Updated:</span> <span :class="{ 'text-red-500': data.updated === 'Never' }">{{ data.updated }}</span></h3>
