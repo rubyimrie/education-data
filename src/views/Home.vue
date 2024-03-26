@@ -27,63 +27,102 @@
                 </div>
                 <!-- Type Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Scope</h3>
-                  <label v-for="datatype in availableTypes" :key="datatype" class="flex items-center">
-                    <input type="checkbox" v-model="selectedTypes" :value="datatype" class="mr-2">
-                    {{ datatype }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleTypeFilter">
+                    Type
+                    <span v-html="isTypeFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isTypeFilterCollapsed" class="ml-4">
+                    <label v-for="datatype in availableTypes" :key="datatype" class="flex items-center">
+                      <input type="checkbox" v-model="selectedTypes" :value="datatype" class="mr-2">
+                      {{ datatype }}
+                    </label>
+                  </div>
                 </div>
                 <!-- Collection Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Collection Method</h3>
-                  <label v-for="collection in availableCollections" :key="collection" class="flex items-center">
-                    <input type="checkbox" v-model="selectedCollections" :value="collection" class="mr-2">
-                    {{ collection }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleCollectionFilter">
+                    Collection Method
+                    <span v-html="isCollectionFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isCollectionFilterCollapsed" class="ml-4">
+                    <label v-for="collection in availableCollections" :key="collection" class="flex items-center">
+                      <input type="checkbox" v-model="selectedCollections" :value="collection" class="mr-2">
+                      {{ collection }}
+                    </label>
+                  </div>
                 </div>
                 <!-- Availability Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Publicly Available</h3>
-                  <label v-for="availability in availableAvailabilities" :key="availability" class="flex items-center">
-                    <input type="checkbox" v-model="selectedAvailability" :value="availability" class="mr-2">
-                    {{ availability }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleAvailabilityFilter">
+                    Publicly Available
+                    <span v-html="isAvailabilityFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isAvailabilityFilterCollapsed" class="ml-4">
+                    <label v-for="availability in availableAvailabilities" :key="availability" class="flex items-center">
+                      <input type="checkbox" v-model="selectedAvailability" :value="availability" class="mr-2">
+                      {{ availability }}
+                    </label>
+                  </div>
                 </div>
+
                 <!-- Provider Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Data Provider</h3>
-                  <label v-for="provider in availableProviders" :key="provider" class="flex items-center">
-                    <input type="checkbox" v-model="selectedProviders" :value="provider" class="mr-2">
-                    {{ provider }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleProviderFilter">
+                    Data Provider
+                    <span v-html="isProviderFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isProviderFilterCollapsed" class="ml-4">
+                    <label v-for="provider in availableProviders" :key="provider" class="flex items-center">
+                      <input type="checkbox" v-model="selectedProviders" :value="provider" class="mr-2">
+                      {{ provider }}
+                    </label>
+                  </div>
                 </div>
+
                 <!-- Updated Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Updated</h3>
-                  <label v-for="updated in availableUpdated" :key="updated" class="flex items-center">
-                    <input type="checkbox" v-model="selectedUpdated" :value="updated" class="mr-2">
-                    {{ updated }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleUpdatedFilter">
+                    Updated
+                    <span v-html="isUpdatedFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isUpdatedFilterCollapsed" class="ml-4">
+                    <label v-for="updated in availableUpdated" :key="updated" class="flex items-center">
+                      <input type="checkbox" v-model="selectedUpdated" :value="updated" class="mr-2">
+                      {{ updated }}
+                    </label>
+                  </div>
                 </div>
-                <!-- Disagregated Filter -->
+
+                <!-- Disaggregated By Filter -->
                 <div class="mb-4">
-                  <h3 class="text-lg font-semibold mb-2">Disaggregated By</h3>
-                  <label v-for="dis in availableDisag" :key="dis" class="flex items-center">
-                    <input type="checkbox" v-model="selectedDisag" :value="dis" class="mr-2">
-                    {{ dis }}
-                  </label>
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleDisagFilter">
+                    Disaggregated By
+                    <span v-html="isDisagFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isDisagFilterCollapsed" class="ml-4">
+                    <label v-for="dis in availableDisag" :key="dis" class="flex items-center">
+                      <input type="checkbox" v-model="selectedDisag" :value="dis" class="mr-2">
+                      {{ dis }}
+                    </label>
+                  </div>
                 </div>
+
                 <!-- Tags -->
-                <div class="mb-4 ">
-                  <h3 class="text-lg font-semibold mb-2">Tags</h3>
-                  <!-- Display tags as buttons for filtering -->
-                  <div class="flex flex-wrap">
-                    <button v-for="(tag, index) in availableTags" :key="index" 
-                            :class="{ 'bg-cutty-sark-600 text-white': isTagSelected(tag) }"
-                            @click="toggleTagFilter(tag)"
-                            class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-400 hover:bg-cutty-sark-600 text-white text-sm rounded-md">
-                      {{ tag }}
-                    </button>
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" @click="toggleTagsFilter">
+                    Tags
+                    <span v-html="isTagsFilterCollapsed ? chevronDownIcon : chevronUpIcon"></span>
+                  </h3>
+                  <div v-show="!isTagsFilterCollapsed" class="ml-4">
+                    <!-- Display tags as buttons for filtering -->
+                    <div class="flex flex-wrap">
+                      <button v-for="(tag, index) in availableTags" :key="index" 
+                              :class="{ 'bg-cutty-sark-600 text-white': isTagSelected(tag) }"
+                              @click="toggleTagFilter(tag)"
+                              class="mr-2 mb-2 px-3 py-1 bg-cutty-sark-400 hover:bg-cutty-sark-600 text-white text-sm rounded-md">
+                        {{ tag }}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -159,7 +198,15 @@ export default {
       selectedTags: [], 
       selectedDisag: [], 
       matchedIndex: -1, // Define matchedIndex property
+      // COLLAPSABLE FILTERS
       isYearFilterCollapsed: false,
+      isTypeFilterCollapsed: false,
+      isCollectionFilterCollapsed: false,
+      isAvailabilityFilterCollapsed: false,
+      isProviderFilterCollapsed: false,
+      isUpdatedFilterCollapsed: false,
+      isDisagFilterCollapsed: false,
+      isTagsFilterCollapsed: false,
       // Define other collapsed states for other filter sections
       chevronUpIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>',
       chevronDownIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>',
@@ -357,6 +404,12 @@ export default {
     isTagSelected(tag) {
       return this.selectedTags.includes(tag);
     },
+    toggleTypeFilter() {
+    this.isTypeFilterCollapsed = !this.isTypeFilterCollapsed;
+    },
+    toggleCollectionFilter() {
+      this.isCollectionFilterCollapsed = !this.isCollectionFilterCollapsed;
+    },
   },
   computed: {
     availableYears() {
@@ -476,6 +529,27 @@ export default {
   toggleYearFilter() {
       this.isYearFilterCollapsed = !this.isYearFilterCollapsed;
     },
+  toggleTypeFilter() {
+    this.isTypeFilterCollapsed = !this.isTypeFilterCollapsed;
+  },
+  toggleCollectionFilter() {
+    this.isCollectionFilterCollapsed = !this.isCollectionFilterCollapsed;
+  },
+  toggleAvailabilityFilter() {
+    this.isAvailabilityFilterCollapsed = !this.isAvailabilityFilterCollapsed;
+  },
+  toggleProviderFilter() {
+    this.isProviderFilterCollapsed = !this.isProviderFilterCollapsed;
+  },
+  toggleUpdatedFilter() {
+    this.isUpdatedFilterCollapsed = !this.isUpdatedFilterCollapsed;
+  },
+  toggleDisagFilter() {
+    this.isDisagFilterCollapsed = !this.isDisagFilterCollapsed;
+  },
+  toggleTagsFilter() {
+    this.isTagsFilterCollapsed = !this.isTagsFilterCollapsed;
+  },
 
   },
   watch: {
