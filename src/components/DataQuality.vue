@@ -287,7 +287,7 @@
     <tr>
       <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700">Urban/Rural</td>
       <td class="border border-gray-400 px-2 py-1 text-sm text-cutty-sark-700 font-semibold">
-        <svg v-if="data.disag.includes('regions')" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <svg v-if="data.disag.includes('Urban/Rural')" class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path fill="#4CAF50" d="M18.585 3.414a2 2 0 0 0-2.828 0L8 11.172 4.243 7.415a2 2 0 0 0-2.828 2.828l4.949 4.95a2 2 0 0 0 2.828 0L18.585 6.243a2 2 0 0 0 0-2.829z"/>
         </svg>
         <!-- If 'regions' is not present in 'disag', display the cross icon -->

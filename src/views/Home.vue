@@ -102,7 +102,7 @@
                   <div v-show="!isDisagFilterCollapsed" class="ml-4">
                     <label v-for="dis in availableDisag" :key="dis" class="flex items-center">
                       <input type="checkbox" v-model="selectedDisag" :value="dis" class="mr-2">
-                      {{ dis }}
+                      {{ capitalizeFirstLetter(dis) }}
                     </label>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            disag:['gender','disability','provinces','regions','population','Urban/Rural'],
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
             educationGroups:[],
             ageGroups:[],
@@ -265,7 +265,7 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Education','Government Expenditure','Out of School Rates','Participation Rate','Educational Attainment Rate','Youth literacy rate','Population','Refugees','Electricity','Sanitation','Drinking Water','Sanitation'],
             fields:'Government expenditure on education as a percentage of GDP (%),Expenditure on education as a percentage of total government expenditure (%), Gross intake ratio to the last grade, Out-of-school rate, Participation rate of youth and adults, Educational attainment rate, adjusted gender parity index (GPIA), Youth literacy rate, Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in curricula,Proportion of schools with single-sex basic sanitation facilities (%), Proportion of schools with basic handwashing facilities (%), Proportion of  with access to electricity (%),Proportion of schools with access to basic drinking water (%), Volume of official development assistance flows for scholarships by sector and type of study, constant US$, Percentage of qualified teachers',
-            disag:['gender','provinces','regions','urbanrural','population','education','age'],
+            disag:['gender','provinces','regions','Urban/Rural','population','education','age'],
             populationGroups:['Richest Quintile','Second Quintile','Middle Quintline','Fourth Quintile','Poorest Quintile'],
             educationGroups:['Primary','Lower Secondary','Upper Secondary'],
             ageGroups:['16-24','25+'],
@@ -295,7 +295,7 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:['gender','disability','provinces','regions','population','urbanrural','age'],
+            disag:['gender','disability','provinces','regions','population','Urban/Rural','age'],
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
             educationGroups:[],
             ageGroups:['Children Under 2','Children Under 5'],
@@ -325,7 +325,7 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Children','Education','Gender'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            disag:['gender','disability','provinces','regions','population','Urban/Rural'],
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
             educationGroups:[],
             ageGroups:[],
@@ -355,7 +355,7 @@ export default {
             margin:{national:5,urban:9,rural:9,refugee:7},
             tags:['Displacement','Education','Food','Security','Health','Internally Displaced Persons (IDP)','Livelihoods','Needs Assessment','Population','Refugees'],
             fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:['gender','disability','provinces','regions','population','urbanrural'],
+            disag:['gender','disability','provinces','regions','population','Urban/Rural'],
             populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
             educationGroups:[],
             ageGroups:[],
@@ -390,6 +390,9 @@ export default {
       } else {
         this.selectedTags.push(tag);
       }
+    },
+    capitalizeFirstLetter(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
     },
     handleTagFilter(tag) {
       // Update filtered data sources based on the selected tag
