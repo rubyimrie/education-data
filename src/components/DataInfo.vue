@@ -5,7 +5,7 @@
     <p class="mb-4 ml-1"><span class="font-semibold">Format Available:</span> <span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.format }}</span></p>
     <p class="mb-4 ml-1"><span class="font-semibold">Link:</span> <a :href="data.link" target="_blank" class="text-blue-500 hover:underline">{{ data.link }}</a></p>
     <div @mouseover="showAvailableInfo = true" @mouseleave="showAvailableInfo = false">
-      <div class="inline-flex flex justify-center items-center relative mb-2">
+      <div class="inline-flex flex justify-center items-center relative mb-4 ml-1">
         <h3 class=" font-semibold flex relative">
           <span class="font-semibold inline-flex">Publicly Available: <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>: </span>
         </h3>

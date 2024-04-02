@@ -302,36 +302,6 @@ export default {
           }
         },
         {
-          title: 'EMIS 2022 (Mock)',
-          data: {
-            date: '2022-07-20',
-            published: '20/01/2023',
-            year: '2022',
-            content: 'EMIS data refers to Education Management Information System data, which encompasses comprehensive information collected and managed by educational institutions, governments, or organizations to facilitate efficient decision-making and policy formulation within the education sector.',
-            coverage: 98.72,
-            coverageInfo: 'No data collected in Kandahar Urban Center due to access constraints',
-            timeliness: '01/01/2022 - 31/12/2022',
-            format: 'XLSX',
-            link: 'https://data.humdata.org/dataset/annual-whole-of-afghanistan-assessment-woaa-2022-household-dataset#',
-            updated: 'Yearly',
-            collection: ['Head of House Hold Survey','Key Informant Interviews'],
-            samplesize:['17,262','10,529'],
-            internal: 'TRUE',
-            available: 'FALSE',
-            datatype: 'National',
-            provider: 'EMIS',
-            versions:['EMIS 2021','EMIS 2023'],
-            confidence:{national:95,urban:90,rural:90,refugee:90},
-            margin:{national:5,urban:9,rural:9,refugee:7},
-            tags:['Children','Education','Gender'],
-            fields:'Household main data, household roster data, children under 2 data, children under 5 data, and disability data',
-            disag:['gender','disability','provinces','regions','population','Urban/Rural'],
-            populationGroups:['Recent IDPs','Recent Returnees','Refugees','Host Community','Non-recently Displaced'],
-            educationGroups:[],
-            ageGroups:[],
-          }
-        },
-        {
           title: 'Whole of Afghanistan Assessment 2023',
           data: {
             date: '2023-09-20',
@@ -443,7 +413,7 @@ export default {
     this.dataSources.forEach(source => {
       availabilities.add(source.data.available);
     });
-    return Array.from(availabilities);
+    return Array.from(availabilities).sort((a, b) => b.localeCompare(a));
   },
   availableProviders() {
     const providers = new Set();

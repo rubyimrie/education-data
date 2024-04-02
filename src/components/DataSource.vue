@@ -1,7 +1,8 @@
 <template>
     <div class="collapsible-box bg-cutty-sark-50" >
-      <div class="collapsible-header bg-cutty-sark-700 text-cutty-sark-50" @click="toggleCollapse">
+      <div class="collapsible-header bg-cutty-sark-700 text-cutty-sark-50 flex relative justify-between items-center" @click="toggleCollapse">
         {{ title }}
+        <span v-html="collapsed ? chevronDownIcon : chevronUpIcon"></span>
       </div>
       <div v-if="!collapsed" class="collapsible-content">
         <div class="button-container">
@@ -66,7 +67,10 @@
       return {
         collapsed: false,
         showDataInfo: true , // Initially show DataInfo
-        selectedTags:[]
+        selectedTags:[],
+        chevronUpIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>',
+        chevronDownIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>',
+
       };
     },
     methods: {
@@ -87,6 +91,14 @@
     handleTagClicked(tag) {
       this.$emit('tag-clicked', tag);
     }
+    },
+    computed:{
+        chevronUpIcon() {
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>';
+      },
+      chevronDownIcon() {
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>';
+      },
     }
   };
   </script>
