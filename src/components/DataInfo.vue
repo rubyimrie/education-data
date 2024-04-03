@@ -3,7 +3,7 @@
     <p class="mb-2 ml-1"><span class="font-semibold">Date Published:</span> {{ data.published }}</p>
     <p class="mb-4 ml-1"><span class="font-semibold">Summary:</span> {{ data.content }}</p>
     <p class="mb-4 ml-1"><span class="font-semibold">Format Available:</span> <span class="bg-cutty-sark-600 text-white rounded px-2">{{ data.format }}</span></p>
-    <p class="mb-4 ml-1"><span class="font-semibold">Link:</span> <a :href="data.link" target="_blank" class="text-blue-500 hover:underline">{{ data.link }}</a></p>
+    <p class="mb-4 ml-1"><span class="font-semibold">Link:</span> <a :href="data.link" target="_blank" class="text-blue-500 hover:underline">Click Here</a></p>
     <div @mouseover="showAvailableInfo = true" @mouseleave="showAvailableInfo = false">
       <div class="inline-flex flex justify-center items-center relative mb-4 ml-1">
         <h3 class=" font-semibold flex relative">
