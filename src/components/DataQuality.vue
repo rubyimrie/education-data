@@ -62,10 +62,10 @@
       <hr>
 
       <!-- Internal Consistency -->
-      <div class="flex items-center mt-2">
+      <div class="flex  relative items-center mt-2">
         <div @mouseover="showInternalInfo = true" @mouseleave="showInternalInfo = false">
         <h3 class="mb-2 ml-4 flex relative"><span class="font-semibold">Internally Consistency</span><img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>: </h3>
-        <div v-if="showInternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
+        <div v-if="showInternalInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
           {{ internalInfo }}
         </div>
         </div>
@@ -80,7 +80,7 @@
     </div>
     <div>
     <!-- External Consistency -->
-    <div class="flex items-center">
+    <div class="flex relative items-center">
       <div @mouseover="showExternalInfo = true" @mouseleave="showExternalInfo = false">
         <h3 class="mb-2 ml-4 flex relative"><span class="font-semibold">External Consistency</span><img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
         <div v-if="showExternalInfo" class=" absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw; z-index: 999;">
@@ -106,7 +106,7 @@
           {{ geoInfo }}
         </div>
       </div>
-    <div class="ml-4 mb-2" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
+    <div class="ml-4 mb-2 relative" @mouseover="showCoverageInfo = true" @mouseleave="showCoverageInfo = false">
       <div class="pie-chart-container text-md">
         <svg viewBox="0 0 200 200" class="pie-chart">
           <!-- Circle representing the pie chart outline -->
@@ -142,10 +142,10 @@
     <div class="column">
 
     <!-- Confidence Levels and Margin of Error -->
-    <div class="mt-4 mb-4 ">
+    <div class="mt-4 mb-4 relative">
       <div @mouseover="showCiInfo = true" @mouseleave="showCiInfo = false">
           <h3 class="mb-2 font-semibold flex relative">Confidence Levels and Margin of Error <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
-          <div v-if="showCiInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+          <div v-if="showCiInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 25vw;">
               {{ ciInfo }}
           </div>
       </div>
@@ -172,9 +172,9 @@
 
     <!-- Disagregation -->
     <div class="mt-4">
-    <div @mouseover="showDisInfo = true" @mouseleave="showDisInfo = false">
+    <div @mouseover="showDisInfo = true" @mouseleave="showDisInfo = false" class="relative">
           <h3 class="mb-2 font-semibold flex relative">Disagregation <img width="20" height="20" src="https://img.icons8.com/windows/32/info-squared.png" alt="info-squared"/>:  </h3>
-          <div v-if="showDisInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 30vw;">
+          <div v-if="showDisInfo" class="absolute bg-white border border-gray-300 p-2 rounded-lg shadow-md" style="width: 25vw;">
               {{ disInfo }}
           </div>
       </div>
