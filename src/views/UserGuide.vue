@@ -24,7 +24,7 @@ import PageHeading from '../components/PageHeading.vue';
     name: 'UserGuide',
     data() {
     return {
-        pdfsrc:'../assets/Guide.pdf'
+        pdfsrc:'../public/Guide.pdf'
     }
   }
 }
