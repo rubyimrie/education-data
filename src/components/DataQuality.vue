@@ -373,9 +373,9 @@
         oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
   
         if (timelinessDate > oneYearAgo) {
-          return 'text-green-600'; // Within the past year
+          return 'text-green-600'; 
         } else {
-          return 'text-orange-500'; // Not within the past year
+          return 'text-orange-500'; 
         }
       }
     }
@@ -392,8 +392,8 @@
   .pie-chart-container {
     width: 100px;
     height: 100px;
-    margin-left: 10px; /* Add space between heading and pie chart */
-    position: relative; /* Position for absolute tooltip */
+    margin-left: 10px; 
+    position: relative; 
   }
   
   .pie-chart {
@@ -432,8 +432,8 @@
       display: flex;}
 
   .column {
-    flex: 1; /* Each column takes up equal space */
-    padding: 10px; /* Add padding as needed */
+    flex: 1; 
+    padding: 10px; 
   }
 
   </style>

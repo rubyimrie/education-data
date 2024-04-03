@@ -177,7 +177,7 @@
 </template>
 
 <script>
-import DataSource from '../components/DataSource.vue'; // Import your DataSource component
+import DataSource from '../components/DataSource.vue'; 
 import FilterDataSource from '../components/FilterDataSource.vue';
 import PageHeading from '../components/PageHeading.vue';
 
@@ -191,15 +191,15 @@ export default {
     return {
       searchQuery: '',
       sortOrder: 'recent',
-      selectedYears: [], // Define selectedYears array
-      selectedTypes: [], // Define selectedTypes array
-      selectedCollections: [], // Define selectedCollections array
-      selectedAvailability: [], // Define selectedAvailability array
-      selectedProviders: [], // Define selectedProviders array
+      selectedYears: [], 
+      selectedTypes: [], 
+      selectedCollections: [], 
+      selectedAvailability: [], 
+      selectedProviders: [], 
       selectedUpdated: [],
       selectedTags: [], 
       selectedDisag: [], 
-      matchedIndex: -1, // Define matchedIndex property
+      matchedIndex: -1, 
       // COLLAPSABLE FILTERS
       isYearFilterCollapsed: false,
       isTypeFilterCollapsed: false,
@@ -209,7 +209,7 @@ export default {
       isUpdatedFilterCollapsed: true,
       isDisagFilterCollapsed: true,
       isTagsFilterCollapsed: true,
-      // Define other collapsed states for other filter sections
+      
       chevronUpIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>',
       chevronDownIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>',
       dataSources: [
@@ -456,15 +456,12 @@ export default {
       return text.charAt(0).toUpperCase() + text.slice(1);
     },
     handleTagFilter(tag) {
-      // Update filtered data sources based on the selected tag
+      
       this.selectedTags = [tag];
     },
     handleTagClicked(tag) {
-      // Update selectedTags array
-      // For example:
       this.selectedTags.push(tag);
     },
-    // Check if tag is selected
     isTagSelected(tag) {
       return this.selectedTags.includes(tag);
     },
@@ -629,7 +626,7 @@ export default {
     selectedYears: {
       handler(newVal) {
         console.log('Selected Years:', newVal);
-        // Call a method to update filteredDataSources based on selectedYears
+        
         this.updateFilteredData();
       },
       deep: true
@@ -637,7 +634,7 @@ export default {
     selectedTypes: {
       handler(newVal) {
         console.log('Selected Types:', newVal);
-        // Call a method to update filteredDataSources based on selectedTypes
+        
         this.updateFilteredData();
       },
       deep: true
@@ -645,19 +642,19 @@ export default {
     selectedCollections: {
       handler(newVal) {
         console.log('Selected Collections:', newVal);
-        // Call a method to update filteredDataSources based on selectedCollections
+        
         this.updateFilteredData();
       },
       deep: true
     },
     selectedTags: {
       handler(newVal) {
-        // Call any method or perform any action when selectedTags change
+        
         console.log('Selected Tags:', newVal);
-        // You might want to update the filtered data sources here
+        
         this.updateFilteredData();
       },
-      deep: true // Watch for changes within the array
+      deep: true 
     },
     matchedIndex(newIndex) {
       if (newIndex !== -1) {
@@ -669,7 +666,7 @@ export default {
 </script>
 
 <style>
-/* Add your global styles here */
+
 .default
     {color: black;}
 
