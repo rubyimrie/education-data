@@ -1,10 +1,10 @@
 <template>
   <div class="bg-cutty-sark-100 flex flex-col ml-20 mr-20 grid-container  min-w-[1200px]">
-    <PageHeading />
-    <div class="container mx-auto px-4 py-8 flex-grow  h-auto  min-w-[1100px]">
-      <div class="gap-8 grid grid-cols-12">
+    <PageHeading class="sticky top-0 z-10"/>
+    <div class="container mx-auto px-4 pt-4 flex-grow  h-auto  min-w-[1100px] "  >
+      <div class="gap-8 grid grid-cols-12" >
         <!-- First column -->
-        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200  min-w-[170px]  ml-6" style="height: calc(250vh);">
+        <div class="col-span-3 flex-col pr-4 bg-cutty-sark-200  min-w-[170px]  ml-6 sticky top-0 z-10 flex-grow overflow-y-auto" style="max-height: calc(75vh);">
           <h1 class="text-3xl ml-6 mt-6 text-cutty-sark-700">Filters</h1>
           <!-- FILTERS -->
           <div class="  flex-col h-screen ml-5 mb-5 default text-black">
@@ -132,7 +132,7 @@
 
         <!-- Second column -->
         <div class="col-span-9 md:min-w-screen-md  min-w-[750px] mr-6">
-          <div class="flex justify-between items-center mb-4">
+          <div class="flex justify-between items-center mb-2 sticky top-0 z-10 bg-cutty-sark-100">
             <div class="relative">
               <input
                 v-model="searchQuery"
@@ -162,11 +162,13 @@
               </select>
             </div>
           </div>
-          <div v-for="(source, index) in sortedDataSources" :key="index" ref="dataSourceRefs" class="mb-10">
+          <div class="overflow-y-auto" style="max-height: calc(70vh);">
+          <div v-for="(source, index) in sortedDataSources" :key="index" ref="dataSourceRefs" class="m-2">
             <div :class="{ 'border-blue-500 border': matchedIndex === index }">
               <DataSource :title="source.title" :data="source.data" :toggleTagFilter="toggleTagFilter" :isTagSelected="isTagSelected" :selectedTags="selectedTags" :clearSelectedTags="clearSelectedTags"/>
             </div>
           </div>
+        </div>
         </div>
       </div>
 
@@ -202,11 +204,11 @@ export default {
       isYearFilterCollapsed: false,
       isTypeFilterCollapsed: false,
       isCollectionFilterCollapsed: false,
-      isAvailabilityFilterCollapsed: false,
-      isProviderFilterCollapsed: false,
-      isUpdatedFilterCollapsed: false,
-      isDisagFilterCollapsed: false,
-      isTagsFilterCollapsed: false,
+      isAvailabilityFilterCollapsed: true,
+      isProviderFilterCollapsed: true,
+      isUpdatedFilterCollapsed: true,
+      isDisagFilterCollapsed: true,
+      isTagsFilterCollapsed: true,
       // Define other collapsed states for other filter sections
       chevronUpIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>',
       chevronDownIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>',
